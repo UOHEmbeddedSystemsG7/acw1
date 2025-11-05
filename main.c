@@ -6,6 +6,10 @@
 
 
 #include "sevenseg.h"
+#include "adc.h"
+
+
+uint16_t adc_count = 0;
 
 int main(void)
 {
@@ -27,15 +31,19 @@ int main(void)
     //INTERRUPT_PeripheralInterruptDisable(); 
 
     xiiseg_init();
-    xiiseg_display(0, digits[1]);
-    xiiseg_display(1, digits[2]);
-    xiiseg_display(2, digits[3]);
-    xiiseg_display(3, digits[4]);
+    adc_init();
+
     
     
     while(1)
     {
+        adc_count = read_adc();
+        
+        xiiseg_display(3, digits[adc_count % 10u]);
+        xiiseg_display(2, digits[(adc_count / 10) % 10]);
+        xiiseg_display(1, digits[(adc_count / 100) % 10]);
+        xiiseg_display(0, digits[(adc_count / 1000u) % 10u]);
+ 
         mult_disp();
-       
     }    
 }
