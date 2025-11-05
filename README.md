@@ -41,7 +41,7 @@
 |      | 5   |     | 
 |      | 6   |     | 
 |      | 7   |     |
-| E    | 0   |     | 
+| E    | 0   | Heating Light    | 
 |      | 1   | Buzzwer    | 
 |      | 2   | LM35 Temp. Sensor    | 
 |      | 3   |     |
