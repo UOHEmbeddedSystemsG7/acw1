@@ -11,7 +11,7 @@ uint16_t read_adc() {
 }
 
 void adc_init() {
-    TRISE = TRISE | (1<<2);
+    TRISE = TRISE | (1<<2); // setting bit 2
     ANSELE = 1<<2;
     ADCON0 = 0x19; // set AN6
     ADCON1 = 0; // ?
