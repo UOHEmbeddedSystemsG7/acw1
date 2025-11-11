@@ -32,7 +32,7 @@ void mult_disp() {
         PORTA = (1 << 3-i);
         PORTD = _disp[i];
 
-        __delay_us(100);
+        __delay_us(700);
 
     }
 }
