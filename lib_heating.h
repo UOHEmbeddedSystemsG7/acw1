@@ -19,7 +19,7 @@ extern "C" {
 
 void heating_init() { TRISE = (1<<7) | TRISE; }
 void heating_on() { PORTE = PORTE | (1 << 7) }
-void heating_off() { PORTE = PORTE | (0 << 7) }
+void heating_off() { PORTE = PORTE & ~(1<<7) }
     
 
 
