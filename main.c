@@ -9,7 +9,7 @@
 #include "adc.h"
 
 
-uint16_t adc_count = 0;
+uint16_t celsius = 0;
 
 int main(void)
 {
@@ -32,17 +32,16 @@ int main(void)
 
     xiiseg_init();
     adc_init();
-
-    
     
     while(1)
     {
-        adc_count = read_adc();
+        celsius = adc_to_celsius(read_adc());
         
-        xiiseg_display(3, digits[adc_count % 10u]);
-        xiiseg_display(2, digits[(adc_count / 10) % 10]);
-        xiiseg_display(1, digits[(adc_count / 100) % 10]);
-        xiiseg_display(0, digits[(adc_count / 1000u) % 10u]);
+        
+        xiiseg_display(3, digits[celsius % 10u]);
+        xiiseg_display(2, digits[(celsius / 10) % 10]);
+        xiiseg_display(1, digits[(celsius / 100) % 10]);
+        xiiseg_display(0, digits[(celsius / 1000u) % 10u]);
  
         mult_disp();
     }    
