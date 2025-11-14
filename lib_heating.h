@@ -18,8 +18,8 @@ extern "C" {
 #endif
 
 void heating_init() { TRISE = (1<<7) | TRISE; }
-void heating_on() { PORTE = PORTE | (1 << 7) }
-void heating_off() { PORTE = PORTE & ~(1<<7) }
+void heating_on() { PORTE = PORTE | (1 << 7); }
+void heating_off() { PORTE = PORTE & ~(1<<7); }
 
 void heating_on_if(uint16_t temp, uint16_t threshold, bool above) {
   if (above) {
