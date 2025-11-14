@@ -7,6 +7,7 @@
 
 #include "sevenseg.h"
 #include "adc.h"
+#include "lcd.h"
 
 
 uint16_t adc_count = 0;
@@ -32,8 +33,13 @@ int main(void)
 
     xiiseg_init();
     adc_init();
+    lcd_init();
 
     
+    
+    lcd_start_long();
+    
+    lcd_disp_char(65);
     
     while(1)
     {
