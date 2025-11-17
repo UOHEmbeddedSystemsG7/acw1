@@ -13,9 +13,10 @@ static void iic_waitidle(void)
 void iic_init(uint32_t freq) 
 {
     uint32_t brg; //?
-    ANSELC &= ~(1<<3);
-    ANSELC &= ~(1<<4);
-    TRISC |= (1<<3) | (1<<4);
+    ANSELC &= ~(1<<3); // Set digital
+    ANSELC &= ~(1<<4); 
+    
+    TRISC |= (1<<3) | (1<<4);// inputs
     
     if (freq == 0) {
         freq = 10000;
