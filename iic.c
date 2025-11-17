@@ -55,3 +55,41 @@ void iic_stop() {
     while (SSP1CON2 & 0x4) {}
 }
 
+uint8_t iic_write(uint8_t data) {
+    iic_waitidle();
+    SSP1BUF = data;
+    while (SSP1STAT & 0x1) {}
+    iic_waitidle();
+    return (SSP1CON2 & 0x40) ? 0 : 1;
+}
+
+uint8_t iic_read_ack() {
+    uint8_t read_byte; // change name?
+    iic_waitidle();
+    SSP1CON2 |= 0x8;
+    while (!(SSP1STAT & 0x1)) {}
+    
+    read_byte = SSP1BUF;
+    iic_waitidle();
+    SSP1CON2 &= ~(1<<5);
+    SSP1CON2 |= (1<<4);
+    while (SSP1CON2 & (1<<4)) {}
+    
+    return read_byte;
+}
+
+uint8_t iic_read_nack() {
+    uint8_t read_byte; // change name?
+    iic_waitidle();
+    SSP1CON2 |= 0x8;
+    while (!(SSP1STAT & 0x1)) {}
+    
+    read_byte = SSP1BUF;
+    iic_waitidle();
+    SSP1CON2 |= (1<<5);
+    SSP1CON2 |= (1<<4);
+    while (SSP1CON2 & (1<<4)) {}
+    
+    return read_byte;
+}
+
