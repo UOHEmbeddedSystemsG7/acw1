@@ -35,3 +35,23 @@ void iic_init(uint32_t freq)
     SSP1STAT = 0x80;
 }
 
+void iic_start(void) {
+    iic_waitidle();
+    
+    SSP1CON2 |=0x01;
+    while (SSP1CON2 & 0x1) {}
+}
+
+void iic_restart() {
+    iic_waitidle();
+    SSP1CON2 |= 0x02;
+    
+    while (SSP1CON2 & 0x02) {}
+}
+
+void iic_stop() {
+    iic_waitidle();
+    SSP1CON2 |= 0x04;
+    while (SSP1CON2 & 0x4) {}
+}
+
