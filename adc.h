@@ -18,7 +18,9 @@ extern "C" {
 
 
 uint16_t read_adc();
+uint16_t adc_to_celsius(uint16_t adc_raw);
 void adc_init();
+
 
 #ifdef	__cplusplus
 }
