@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/system/src/system.c"
+# 1 "sevenseg.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 295 "<built-in>" 3
@@ -6,10 +6,12 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/system/src/system.c" 2
-# 36 "mcc_generated_files/system/src/system.c"
-# 1 "mcc_generated_files/system/src/../system.h" 1
-# 39 "mcc_generated_files/system/src/../system.h"
+# 1 "sevenseg.c" 2
+
+# 1 "./sevenseg.h" 1
+
+# 1 "./mcc_generated_files/system/system.h" 1
+# 39 "./mcc_generated_files/system/system.h"
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -9642,19 +9644,19 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 2 3
-# 40 "mcc_generated_files/system/src/../system.h" 2
+# 40 "./mcc_generated_files/system/system.h" 2
 
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdbool.h" 1 3
-# 42 "mcc_generated_files/system/src/../system.h" 2
-# 1 "mcc_generated_files/system/src/../config_bits.h" 1
-# 39 "mcc_generated_files/system/src/../config_bits.h"
-# 1 "mcc_generated_files/system/src/../../system/clock.h" 1
-# 56 "mcc_generated_files/system/src/../../system/clock.h"
+# 42 "./mcc_generated_files/system/system.h" 2
+# 1 "./mcc_generated_files/system/config_bits.h" 1
+# 39 "./mcc_generated_files/system/config_bits.h"
+# 1 "./mcc_generated_files/system/../system/clock.h" 1
+# 56 "./mcc_generated_files/system/../system/clock.h"
 void CLOCK_Initialize(void);
-# 40 "mcc_generated_files/system/src/../config_bits.h" 2
-# 43 "mcc_generated_files/system/src/../system.h" 2
-# 1 "mcc_generated_files/system/src/../../system/pins.h" 1
-# 98 "mcc_generated_files/system/src/../../system/pins.h"
+# 40 "./mcc_generated_files/system/config_bits.h" 2
+# 43 "./mcc_generated_files/system/system.h" 2
+# 1 "./mcc_generated_files/system/../system/pins.h" 1
+# 98 "./mcc_generated_files/system/../system/pins.h"
 void PIN_MANAGER_Initialize (void);
 
 
@@ -9664,49 +9666,85 @@ void PIN_MANAGER_Initialize (void);
 
 
 void PIN_MANAGER_IOC(void);
-# 44 "mcc_generated_files/system/src/../system.h" 2
-# 1 "mcc_generated_files/system/src/../../system/interrupt.h" 1
-# 85 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 44 "./mcc_generated_files/system/system.h" 2
+# 1 "./mcc_generated_files/system/../system/interrupt.h" 1
+# 85 "./mcc_generated_files/system/../system/interrupt.h"
 void INTERRUPT_Initialize (void);
-# 219 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 219 "./mcc_generated_files/system/../system/interrupt.h"
 void INT0_ISR(void);
-# 228 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 228 "./mcc_generated_files/system/../system/interrupt.h"
 void INT0_CallBack(void);
-# 237 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 237 "./mcc_generated_files/system/../system/interrupt.h"
 void INT0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 246 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 246 "./mcc_generated_files/system/../system/interrupt.h"
 extern void (*INT0_InterruptHandler)(void);
-# 255 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 255 "./mcc_generated_files/system/../system/interrupt.h"
 void INT0_DefaultInterruptHandler(void);
-# 264 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 264 "./mcc_generated_files/system/../system/interrupt.h"
 void INT1_ISR(void);
-# 273 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 273 "./mcc_generated_files/system/../system/interrupt.h"
 void INT1_CallBack(void);
-# 282 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 282 "./mcc_generated_files/system/../system/interrupt.h"
 void INT1_SetInterruptHandler(void (* InterruptHandler)(void));
-# 291 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 291 "./mcc_generated_files/system/../system/interrupt.h"
 extern void (*INT1_InterruptHandler)(void);
-# 300 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 300 "./mcc_generated_files/system/../system/interrupt.h"
 void INT1_DefaultInterruptHandler(void);
-# 309 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 309 "./mcc_generated_files/system/../system/interrupt.h"
 void INT2_ISR(void);
-# 318 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 318 "./mcc_generated_files/system/../system/interrupt.h"
 void INT2_CallBack(void);
-# 327 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 327 "./mcc_generated_files/system/../system/interrupt.h"
 void INT2_SetInterruptHandler(void (* InterruptHandler)(void));
-# 336 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 336 "./mcc_generated_files/system/../system/interrupt.h"
 extern void (*INT2_InterruptHandler)(void);
-# 345 "mcc_generated_files/system/src/../../system/interrupt.h"
+# 345 "./mcc_generated_files/system/../system/interrupt.h"
 void INT2_DefaultInterruptHandler(void);
-# 45 "mcc_generated_files/system/src/../system.h" 2
-# 54 "mcc_generated_files/system/src/../system.h"
+# 45 "./mcc_generated_files/system/system.h" 2
+# 54 "./mcc_generated_files/system/system.h"
 void SYSTEM_Initialize(void);
-# 37 "mcc_generated_files/system/src/system.c" 2
+# 3 "./sevenseg.h" 2
+# 20 "./sevenseg.h"
+const uint8_t digits[11];
+uint8_t _disp[4];
+void xiiseg_init();
+void xiiseg_display(uint8_t index, uint8_t value);
+void xiiseg_display_temp(uint16_t value);
+void mult_disp();
+# 3 "sevenseg.c" 2
 
 
-void SYSTEM_Initialize(void)
-{
-    CLOCK_Initialize();
-    PIN_MANAGER_Initialize();
-    INTERRUPT_Initialize();
+
+const uint8_t digits[11] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F, 0x00};
+uint8_t _disp[4] = {0x00, 0x00, 0x00, 0x00};
+
+void xiiseg_init() {
+    ANSELD = 0;
+    ANSELA = 0;
+
+    TRISD = 0;
+    TRISA = 0;
+
+    PORTA = 0;
+    PORTD = 0;
+}
+
+
+void xiiseg_display(uint8_t index, uint8_t value) {
+    _disp[index] = value;
+}
+
+void mult_disp() {
+    PORTD = 0;
+    for (int i = 0; i < 4; i++) {
+
+        PORTA = 0xf;
+        PORTD = 0;
+
+        PORTA = (1 << 3-i);
+        PORTD = _disp[i];
+
+        _delay((unsigned long)((700)*(8000000U/4000000.0)));
+
+    }
 }

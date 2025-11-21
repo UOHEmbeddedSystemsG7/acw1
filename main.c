@@ -7,6 +7,7 @@
 
 #include "sevenseg.h"
 #include "adc.h"
+#include "debounce.h"
 
 
 uint16_t celsius = 0;
@@ -32,7 +33,7 @@ int main(void)
 
     xiiseg_init();
     adc_init();
-    
+
     while(1)
     {
         celsius = adc_to_celsius(read_adc());
