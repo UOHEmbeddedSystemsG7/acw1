@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=acw.X
+PROJECTNAME=acw1
 
 # Active Configuration
 DEFAULTCONF=default

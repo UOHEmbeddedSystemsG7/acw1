@@ -9,7 +9,7 @@
 #include "adc.h"
 
 
-uint16_t celsius = 0;
+uint16_t celsius = 22;
 
 int main(void)
 {
@@ -33,16 +33,27 @@ int main(void)
     xiiseg_init();
     adc_init();
     
+    
+    TRISC = 0x00;
+    
     while(1)
     {
-        celsius = adc_to_celsius(read_adc());
-        
-      
-        xiiseg_display(3, 0x39); // 0x39 is the hex for C
-        xiiseg_display(2, digits[celsius % 10u]);
-        xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
-        xiiseg_display(0, digits[(celsius / 100) % 10]);
-        
-        mult_disp();
+        if (celsius == 22){
+            LATC = 0x01;
+            celsius++;
+        }
+        else if (celsius == 23){
+            LATC = 0x00;
+            celsius--;
+        }
+//         celsius = adc_to_celsius(read_adc());
+//        
+//      
+//         xiiseg_display(3, 0x39); // 0x39 is the hex for C
+//         xiiseg_display(2, digits[celsius % 10u]);
+//         xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
+//         xiiseg_display(0, digits[(celsius / 100) % 10]);
+//        
+//         mult_disp();
     }    
 }
