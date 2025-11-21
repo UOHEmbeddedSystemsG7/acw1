@@ -8,7 +8,7 @@ typedef struct {
 } debounce_state_t;
 
 
-inline uint8_t debounce(unsigned char raw, debounce_state_t state) {
+inline uint8_t debounce(uint8_t raw, debounce_state_t state) {
   if (raw == state.stable) { 
       if (state.count < 5u) state.count++;
   } 
@@ -33,24 +33,24 @@ inline uint8_t debounce(unsigned char raw, debounce_state_t state) {
 
 uint8_t btn_dec() {
   static debounce_state_t state = {0, 0, 0};
-  unsigned char raw = PORTCbits.RC7 ? 1u : 0u;
+  uint8_t raw = PORTCbits.RC7 ? 1u : 0u;
   return debounce(raw, state);
 }
 
 uint8_t btn_sel() {
   static debounce_state_t state = {0, 0, 0};
-  unsigned char raw = PORTCbits.RC1 ? 1u : 0u;
+  uint8_t raw = PORTCbits.RC1 ? 1u : 0u;
   return debounce(raw, state);
 }
 
 uint8_t button_increment() {
   static debounce_state_t state = {0, 0, 0};
-  unsigned char raw = PORTCbits.RC7 ? 1u : 0u;
+  uint8_t raw = PORTCbits.RC7 ? 1u : 0u;
   return debounce(raw, state);
 }
 
 uint8_t button_cyc() {
   static debounce_state_t state = {0, 0, 0};
-  unsigned char raw = PORTCbits.RC0 ? 1u : 0u;
+  uint8_t raw = PORTCbits.RC0 ? 1u : 0u;
   return debounce(raw, state);
 }
