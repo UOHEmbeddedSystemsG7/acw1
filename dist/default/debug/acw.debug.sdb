@@ -3,35 +3,71 @@
 [d edition pro ]
 [d chip 18F45K22 ]
 [d frameptr 4065 ]
-"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\fleq.c
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+"9 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/aodiv.c
+[v ___aodiv __aodiv `(o  1 e 8 0 ]
+"9 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/aomod.c
+[v ___aomod __aomod `(o  1 e 8 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/atdiv.c
+[v ___atdiv __atdiv `(m  1 e 3 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/atmod.c
+[v ___atmod __atmod `(m  1 e 3 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"4 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
-"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\float.c
+"62 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/float.c
 [v ___ftpack __ftpack `(f  1 e 4 0 ]
-"86 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftadd.c
+"86 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/ftadd.c
 [v ___ftadd __ftadd `(f  1 e 4 0 ]
-"54 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftdiv.c
+"54 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 4 0 ]
-"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftmul.c
+"62 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/ftmul.c
 [v ___ftmul __ftmul `(f  1 e 4 0 ]
-"19 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftsub.c
+"19 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/ftsub.c
 [v ___ftsub __ftsub `(f  1 e 4 0 ]
-"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"9 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/lodiv.c
+[v ___lodiv __lodiv `(uo  1 e 8 0 ]
+"9 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/lomod.c
+[v ___lomod __lomod `(uo  1 e 8 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/ltdiv.c
+[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/ltmod.c
+[v ___ltmod __ltmod `(um  1 e 3 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"10 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "245
 [v ___flsub __flsub `(d  1 e 4 0 ]
-"11 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcdiv.c
+"11 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
-"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcmul.c
+"8 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
-"15 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul32.c
+"15 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/Umul24.c
+[v ___tmul __tmul `(um  1 e 3 0 ]
+"15 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
+"91 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"10 C:\Users\719588\MPLABXProjects\acw.X\main.c
+"15 /Users/ashentwisle/Documents/projects/embedded/acw/main.c
 [v _main main `(i  1 e 2 0 ]
-"39 C:\Users\719588\MPLABXProjects\acw.X\mcc_generated_files/system/src/clock.c
+"39 /Users/ashentwisle/Documents/projects/embedded/acw/mcc_generated_files/system/src/clock.c
 [v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
-"42 C:\Users\719588\MPLABXProjects\acw.X\mcc_generated_files/system/src/interrupt.c
+"42 /Users/ashentwisle/Documents/projects/embedded/acw/mcc_generated_files/system/src/interrupt.c
 [v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
 "83
 [v _INT0_CallBack INT0_CallBack `(v  1 e 1 0 ]
@@ -51,17 +87,11 @@
 [v _INT2_SetInterruptHandler INT2_SetInterruptHandler `(v  1 e 1 0 ]
 "148
 [v _INT2_DefaultInterruptHandler INT2_DefaultInterruptHandler `(v  1 e 1 0 ]
-"38 C:\Users\719588\MPLABXProjects\acw.X\mcc_generated_files/system/src/pins.c
+"38 /Users/ashentwisle/Documents/projects/embedded/acw/mcc_generated_files/system/src/pins.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"39 C:\Users\719588\MPLABXProjects\acw.X\mcc_generated_files/system/src/system.c
+"39 /Users/ashentwisle/Documents/projects/embedded/acw/mcc_generated_files/system/src/system.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-"9 C:\Users\719588\MPLABXProjects\acw.X\sevenseg.c
-[v _xiiseg_init xiiseg_init `(v  1 e 1 0 ]
-"21
-[v _xiiseg_display xiiseg_display `(v  1 e 1 0 ]
-"25
-[v _mult_disp mult_disp `(v  1 e 1 0 ]
-"52 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h
+"52 /Applications/microchip/mplabx/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8/pic/include/proc/pic18f45k22.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
 "97
 [v _ANSELB ANSELB `VEuc  1 e 1 @3897 ]
@@ -201,53 +231,30 @@
 ]
 [u S76 . 1 `S54 1 . 1 0 `S63 1 . 1 0 `S72 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES76  1 e 1 @4082 ]
-"38 C:\Users\719588\MPLABXProjects\acw.X\mcc_generated_files/system/src/interrupt.c
+"38 /Users/ashentwisle/Documents/projects/embedded/acw/mcc_generated_files/system/src/interrupt.c
 [v _INT0_InterruptHandler INT0_InterruptHandler `*.37(v  1 e 2 0 ]
 "39
 [v _INT1_InterruptHandler INT1_InterruptHandler `*.37(v  1 e 2 0 ]
 "40
 [v _INT2_InterruptHandler INT2_InterruptHandler `*.37(v  1 e 2 0 ]
-"6 C:\Users\719588\MPLABXProjects\acw.X\sevenseg.c
-[v _digits digits `C[11]uc  1 e 11 0 ]
-"7
+"7 /Users/ashentwisle/Documents/projects/embedded/acw/sevenseg.c
 [v __disp _disp `[4]uc  1 e 4 0 ]
-"10 C:\Users\719588\MPLABXProjects\acw.X\main.c
+"15 /Users/ashentwisle/Documents/projects/embedded/acw/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"41
+"49
 } 0
-"9 C:\Users\719588\MPLABXProjects\acw.X\sevenseg.c
-[v _xiiseg_init xiiseg_init `(v  1 e 1 0 ]
-{
-"18
-} 0
-"21
-[v _xiiseg_display xiiseg_display `(v  1 e 1 0 ]
-{
-[v xiiseg_display@index index `uc  1 p 1 wreg ]
-[v xiiseg_display@index index `uc  1 p 1 wreg ]
-[v xiiseg_display@value value `uc  1 p 1 0 ]
-[v xiiseg_display@index index `uc  1 p 1 1 ]
-"23
-} 0
-"25
-[v _mult_disp mult_disp `(v  1 e 1 0 ]
-{
-"27
-[v mult_disp@i i `i  1 a 2 2 ]
-"38
-} 0
-"39 C:\Users\719588\MPLABXProjects\acw.X\mcc_generated_files/system/src/system.c
+"39 /Users/ashentwisle/Documents/projects/embedded/acw/mcc_generated_files/system/src/system.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
 "44
 } 0
-"38 C:\Users\719588\MPLABXProjects\acw.X\mcc_generated_files/system/src/pins.c
+"38 /Users/ashentwisle/Documents/projects/embedded/acw/mcc_generated_files/system/src/pins.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
 "99
 } 0
-"42 C:\Users\719588\MPLABXProjects\acw.X\mcc_generated_files/system/src/interrupt.c
+"42 /Users/ashentwisle/Documents/projects/embedded/acw/mcc_generated_files/system/src/interrupt.c
 [v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
 {
 "71
@@ -270,7 +277,7 @@
 [v INT0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
 "94
 } 0
-"39 C:\Users\719588\MPLABXProjects\acw.X\mcc_generated_files/system/src/clock.c
+"39 /Users/ashentwisle/Documents/projects/embedded/acw/mcc_generated_files/system/src/clock.c
 [v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
 {
 "50

@@ -9716,68 +9716,20 @@ void xiiseg_display(uint8_t index, uint8_t value);
 void xiiseg_display_temp(uint16_t value);
 void mult_disp();
 # 9 "main.c" 2
-# 1 "./adc.h" 1
-# 20 "./adc.h"
-uint16_t read_adc();
-void adc_init();
-# 10 "main.c" 2
+
 # 1 "./debounce.h" 1
-# 19 "./debounce.h"
-uint8_t press_ra4() {
-  return debounce(RA4_bit);
-}
-
-uint8_t press_ra5() {
-  return debounce(RA5_bit);
-}
-
-
-__attribute__((inline)) uint8_t debounce(char bit) {
-  static unsigned char last = 0;
-  static unsigned char stable = 0;
-  static unsigned char count = 0;
-
-  unsigned char raw = bit ? 1u : 0u;
-
-  if (raw == stable) {
-    if (count < 5u) count++;
-  }
-
-  else {
-    count = 0;
-    stable = 0;
-  }
-
-  if (count >= 5u) {
-    if (stable && !last) {
-      last = 1;
-      return 1;
-    }
-    if (!stable) last = 0;
-  }
-
-}
+# 21 "./debounce.h"
+uint8_t btn_dec();
+uint8_t btn_inc();
+uint8_t btn_sel();
+uint8_t btn_cyc();
 # 11 "main.c" 2
 
 
-uint16_t adc_count = 0;
+uint16_t celsius = 0;
 
 int main(void)
 {
     SYSTEM_Initialize();
-# 34 "main.c"
-    xiiseg_init();
-    adc_init();
-
-    while(1)
-    {
-        adc_count = read_adc();
-
-        xiiseg_display(3, digits[adc_count % 10u]);
-        xiiseg_display(2, digits[(adc_count / 10) % 10]);
-        xiiseg_display(1, digits[(adc_count / 100) % 10]);
-        xiiseg_display(0, digits[(adc_count / 1000u) % 10u]);
-
-        mult_disp();
-    }
+# 49 "main.c"
 }

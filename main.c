@@ -6,7 +6,7 @@
 
 
 #include "sevenseg.h"
-#include "adc.h"
+//#include "adc.h"
 #include "debounce.h"
 
 
@@ -30,20 +30,20 @@ int main(void)
 
     // Disable the Peripheral Interrupts 
     //INTERRUPT_PeripheralInterruptDisable(); 
-
-    xiiseg_init();
-    adc_init();
-
-    while(1)
-    {
-        celsius = adc_to_celsius(read_adc());
-        
-      
-        xiiseg_display(3, 0x39); // 0x39 is the hex for C
-        xiiseg_display(2, digits[celsius % 10u]);
-        xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
-        xiiseg_display(0, digits[(celsius / 100) % 10]);
-        
-        mult_disp();
-    }    
+//
+//    xiiseg_init();
+//    adc_init();
+//
+//    while(1)
+//    {
+//        celsius = adc_to_celsius(read_adc());
+//        
+//      
+//        xiiseg_display(3, 0x39); // 0x39 is the hex for C
+//        xiiseg_display(2, digits[celsius % 10u]);
+//        xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
+//        xiiseg_display(0, digits[(celsius / 100) % 10]);
+//        
+//        mult_disp();
+//    }    
 }
