@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- /tmp/xcwE3saf0/driver_tmp_3.o
+ /tmp/xcPXJZGzv/driver_tmp_3.o
  -Odist/default/debug/acw.debug.hex
  -logfile=dist/default/debug/acw.debug.hxl
  -addressing=1
@@ -9,11 +9,11 @@
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(/tmp/xcwE3saf0/driver_tmp_3.o)
-  600h - 60Ch		(/tmp/xcwE3saf0/driver_tmp_3.o)
-  60Eh - 6CDh		(/tmp/xcwE3saf0/driver_tmp_3.o)
-  7FFCh - 7FFFh		(/tmp/xcwE3saf0/driver_tmp_3.o)
-  300000h - 30000Dh		(/tmp/xcwE3saf0/driver_tmp_3.o)
+  0h - 3h		(/tmp/xcPXJZGzv/driver_tmp_3.o)
+  600h - 60Ch		(/tmp/xcPXJZGzv/driver_tmp_3.o)
+  60Eh - 6CDh		(/tmp/xcPXJZGzv/driver_tmp_3.o)
+  7FFCh - 7FFFh		(/tmp/xcPXJZGzv/driver_tmp_3.o)
+  300000h - 30000Dh		(/tmp/xcPXJZGzv/driver_tmp_3.o)
  Unused ranges:
   4h - 5FFh
   60Dh - 60Dh
@@ -23,7 +23,7 @@
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (/tmp/xcwE3saf0/driver_tmp_3.o)
+  H1 = Input file             (/tmp/xcPXJZGzv/driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
