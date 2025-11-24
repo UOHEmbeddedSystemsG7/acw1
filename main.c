@@ -43,7 +43,7 @@ int main(void)
     while(1)
     {
         // we want this on ISR prob
-        mult_disp();
+        xiiseg_multiplex();
 
         
         
