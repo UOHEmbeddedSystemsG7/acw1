@@ -22,7 +22,7 @@ void xiiseg_display(uint8_t index, uint8_t value) {
     _disp[index] = value;
 }
 
-void mult_disp() {
+void xiiseg_multiplex() {
     PORTD = 0;
     for (int i = 0; i < 4; i++) {
         // blank
