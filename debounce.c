@@ -2,9 +2,9 @@
 #include "debounce.h"
 
 typedef struct {
-  unsigned char last;
-  unsigned char stable;
-  unsigned char count;
+  unsigned uint8_t last;
+  unsigned uint8_t stable;
+  unsigned uint8_t count;
 } debounce_state_t;
 
 
