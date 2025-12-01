@@ -17,8 +17,8 @@ extern "C" {
 #endif
 
     
-void eeprom_write_byte(uint32_t addr, uint8_t data);
-uint8_t eeprom_read_byte(uint32_t addr);
+void eeprom_write_byte(uint16_t addr, uint8_t data);
+uint8_t eeprom_read_byte(uint16_t addr);
 
 
 #ifdef	__cplusplus
