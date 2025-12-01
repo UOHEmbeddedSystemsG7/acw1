@@ -9714,23 +9714,110 @@ uint8_t _disp[4];
 void xiiseg_init();
 void xiiseg_display(uint8_t index, uint8_t value);
 void xiiseg_display_temp(uint16_t value);
-void mult_disp();
+void xiiseg_multiplex();
 # 9 "main.c" 2
+# 1 "./adc.h" 1
+# 20 "./adc.h"
+uint16_t read_adc();
+uint16_t adc_to_celsius(uint16_t adc_raw);
+void adc_init();
+# 10 "main.c" 2
+# 1 "./iic.h" 1
+# 19 "./iic.h"
+void iic_init(uint32_t freq);
+void iic_start();
+void iic_restart();
+void iic_stop();
+uint8_t iic_write(uint8_t data);
+uint8_t iic_read_ack();
+uint8_t iic_read_nack();
+
+void eeprom_write_byte(uint16_t addr, uint8_t data);
+uint8_t eeprom_read_byte(uint16_t addr);
+
+
+uint8_t press_ra4();
+uint8_t press_ra5();
+# 11 "main.c" 2
+# 1 "./rtc.h" 1
+# 14 "./rtc.h"
+typedef struct { uint8_t second, minute, hour;} rtc_time_t;
+
+static uint8_t dec_to_bcd(uint8_t dec);
+static uint8_t bcd_to_dec(uint8_t bcd);
+
+void rtc_write_reg(uint8_t addr, uint8_t data);
+void rtc_read_reg(uint8_t addr, uint8_t* buf, uint8_t buf_len);
+
+void rtc_init();
+void rtc_set_time(rtc_time_t* time);
+void rtc_get_time(rtc_time_t* time);
+# 12 "main.c" 2
+
+
+
+
+uint16_t celsius = 0;
+
+
+rtc_time_t now;
+uint64_t ms = 0;
+
+
+
+
 
 int main(void)
 {
     SYSTEM_Initialize();
-# 29 "main.c"
-    xiiseg_init();
-    xiiseg_display(0, digits[1]);
-    xiiseg_display(1, digits[2]);
-    xiiseg_display(2, digits[3]);
-    xiiseg_display(3, digits[4]);
 
+
+    adc_init();
+
+    iic_init(100000ul);
+
+    rtc_init();
+
+    xiiseg_init();
 
     while(1)
     {
-        mult_disp();
+
+        xiiseg_multiplex();
+# 59 "main.c"
+        xiiseg_display(3, digits[now.second % 10u]);
+        xiiseg_display(2, digits[(now.second / 10) % 10]);
+        xiiseg_display(1, digits[now.minute % 10u]);
+        xiiseg_display(0, digits[(now.minute / 10) % 10]);
+
+        ms+= 1;
+        if (ms > 500) {
+            ms=0l;
+            rtc_get_time(&now);
+        }
+
 
     }
+
+
+    TRISC = 0x00;
+
+    while(1)
+    {
+
+    TRISC = 0x00;
+
+    while(1)
+    {
+         celsius = adc_to_celsius(read_adc());
+
+
+         xiiseg_display(3, 0x39);
+         xiiseg_display(2, digits[celsius % 10u]);
+         xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) );
+         xiiseg_display(0, digits[(celsius / 100) % 10]);
+
+         mult_disp();
+    }
+}
 }

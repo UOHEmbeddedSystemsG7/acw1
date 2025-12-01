@@ -871,10 +871,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 852 ]
 }
 "25
-[; ;sevenseg.c: 25: void mult_disp() {
-[v _mult_disp `(v ~T0 @X0 1 ef ]
+[; ;sevenseg.c: 25: void xiiseg_multiplex() {
+[v _xiiseg_multiplex `(v ~T0 @X0 1 ef ]
 {
-[e :U _mult_disp ]
+[e :U _xiiseg_multiplex ]
 [f ]
 "26
 [; ;sevenseg.c: 26:     PORTD = 0;
@@ -901,8 +901,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;sevenseg.c: 33:         PORTD = _disp[i];
 [e = _PORTD *U + &U __disp * -> -> _i `ui `ux -> -> # *U &U __disp `ui `ux ]
 "35
-[; ;sevenseg.c: 35:         _delay((unsigned long)((100)*(8000000U/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `ul `d .4000000.0 `ul ]
+[; ;sevenseg.c: 35:         _delay((unsigned long)((700)*(8000000U/4000000.0)));
+[e ( __delay (1 -> * -> -> 700 `i `d / -> -> 8000000 `ul `d .4000000.0 `ul ]
 "37
 [; ;sevenseg.c: 37:     }
 }

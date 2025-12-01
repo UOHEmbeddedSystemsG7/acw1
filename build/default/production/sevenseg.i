@@ -9710,7 +9710,7 @@ uint8_t _disp[4];
 void xiiseg_init();
 void xiiseg_display(uint8_t index, uint8_t value);
 void xiiseg_display_temp(uint16_t value);
-void mult_disp();
+void xiiseg_multiplex();
 # 3 "sevenseg.c" 2
 
 
@@ -9734,7 +9734,7 @@ void xiiseg_display(uint8_t index, uint8_t value) {
     _disp[index] = value;
 }
 
-void mult_disp() {
+void xiiseg_multiplex() {
     PORTD = 0;
     for (int i = 0; i < 4; i++) {
 
@@ -9744,7 +9744,7 @@ void mult_disp() {
         PORTA = (1 << 3-i);
         PORTD = _disp[i];
 
-        _delay((unsigned long)((100)*(8000000U/4000000.0)));
+        _delay((unsigned long)((700)*(8000000U/4000000.0)));
 
     }
 }

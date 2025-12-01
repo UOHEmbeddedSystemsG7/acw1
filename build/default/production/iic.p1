@@ -1,17 +1,25 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"54 ./mcc_generated_files/system/system.h
-[; ;./mcc_generated_files/system/system.h: 54: void SYSTEM_Initialize(void);
-[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"22 ./sevenseg.h
-[; ;./sevenseg.h: 22: void xiiseg_init();
-[v _xiiseg_init `(v ~T0 @X0 0 e? ]
-"23
-[; ;./sevenseg.h: 23: void xiiseg_display(uint8_t index, uint8_t value);
-[v _xiiseg_display `(v ~T0 @X0 0 ef2`uc`uc ]
-"25
-[; ;./sevenseg.h: 25: void mult_disp();
-[v _mult_disp `(v ~T0 @X0 0 e? ]
+"13749 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 13749: extern volatile unsigned char SSP1CON2 __attribute__((address(0xFC5)));
+[v _SSP1CON2 `Vuc ~T0 @X0 0 e@4037 ]
+"14341
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 14341: extern volatile unsigned char SSP1STAT __attribute__((address(0xFC7)));
+[v _SSP1STAT `Vuc ~T0 @X0 0 e@4039 ]
+"147
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 147: extern volatile unsigned char ANSELC __attribute__((address(0xF3A)));
+[v _ANSELC `Vuc ~T0 @X0 0 e@3898 ]
+"8504
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 8504: extern volatile unsigned char TRISC __attribute__((address(0xF94)));
+[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
+"14971
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 14971: extern volatile unsigned char SSP1ADD __attribute__((address(0xFC8)));
+[v _SSP1ADD `Vuc ~T0 @X0 0 e@4040 ]
+"14103
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 14103: extern volatile unsigned char SSP1CON1 __attribute__((address(0xFC6)));
+[v _SSP1CON1 `Vuc ~T0 @X0 0 e@4038 ]
+"15225
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 15225: extern volatile unsigned char SSP1BUF __attribute__((address(0xFC9)));
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@4041 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 54: __asm("ANSELA equ 0F38h");
 [; <" ANSELA equ 0F38h ;# ">
@@ -768,70 +776,316 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17372
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 17372: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"20 ./sevenseg.h
-[; ;./sevenseg.h: 20: const uint8_t digits[11];
-[v _digits `Cuc ~T0 @X0 -> 11 `i e ]
-[i _digits
-:U ..
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
-..
-]
-"21
-[; ;./sevenseg.h: 21: uint8_t _disp[4];
-[v __disp `uc ~T0 @X0 -> 4 `i e ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"10 main.c
-[; ;main.c: 10: int main(void)
-[v _main `(i ~T0 @X0 1 ef ]
-"11
-[; ;main.c: 11: {
-{
-[e :U _main ]
-[f ]
+"11 iic.c
+[; ;iic.c: 11: static void iic_waitidle(void)
+[v _iic_waitidle `(v ~T0 @X0 1 sf ]
 "12
-[; ;main.c: 12:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"29
-[; ;main.c: 29:     xiiseg_init();
-[e ( _xiiseg_init ..  ]
-"30
-[; ;main.c: 30:     xiiseg_display(0, digits[1]);
-[e ( _xiiseg_display (2 , -> -> 0 `i `uc *U + &U _digits * -> -> -> 1 `i `ui `ux -> -> # *U &U _digits `ui `ux ]
-"31
-[; ;main.c: 31:     xiiseg_display(1, digits[2]);
-[e ( _xiiseg_display (2 , -> -> 1 `i `uc *U + &U _digits * -> -> -> 2 `i `ui `ux -> -> # *U &U _digits `ui `ux ]
-"32
-[; ;main.c: 32:     xiiseg_display(2, digits[3]);
-[e ( _xiiseg_display (2 , -> -> 2 `i `uc *U + &U _digits * -> -> -> 3 `i `ui `ux -> -> # *U &U _digits `ui `ux ]
-"33
-[; ;main.c: 33:     xiiseg_display(3, digits[4]);
-[e ( _xiiseg_display (2 , -> -> 3 `i `uc *U + &U _digits * -> -> -> 4 `i `ui `ux -> -> # *U &U _digits `ui `ux ]
-"36
-[; ;main.c: 36:     while(1)
-[e :U 853 ]
-"37
-[; ;main.c: 37:     {
+[; ;iic.c: 12: {
 {
-"38
-[; ;main.c: 38:         mult_disp();
-[e ( _mult_disp ..  ]
-"40
-[; ;main.c: 40:     }
+[e :U _iic_waitidle ]
+[f ]
+"13
+[; ;iic.c: 13:     while ((SSP1CON2 & 0x1F) ||
+[e $U 852  ]
+[e :U 853 ]
+"16
+[; ;iic.c: 16:     {
+{
+"17
+[; ;iic.c: 17:     }
 }
 [e :U 852 ]
-[e $U 853  ]
+"13
+[; ;iic.c: 13:     while ((SSP1CON2 & 0x1F) ||
+[e $ || != & -> _SSP1CON2 `i -> 31 `i -> 0 `i != & -> _SSP1STAT `i -> 4 `i -> 0 `i 853  ]
 [e :U 854 ]
-"41
-[; ;main.c: 41: }
+"18
+[; ;iic.c: 18: }
 [e :UE 851 ]
+}
+"20
+[; ;iic.c: 20: void iic_init(uint32_t freq)
+[v _iic_init `(v ~T0 @X0 1 ef1`ul ]
+"21
+[; ;iic.c: 21: {
+{
+[e :U _iic_init ]
+"20
+[; ;iic.c: 20: void iic_init(uint32_t freq)
+[v _freq `ul ~T0 @X0 1 r1 ]
+"21
+[; ;iic.c: 21: {
+[f ]
+"22
+[; ;iic.c: 22:     uint32_t brg;
+[v _brg `ul ~T0 @X0 1 a ]
+"23
+[; ;iic.c: 23:     ANSELC &= ~(1<<3);
+[e =& _ANSELC -> ~ << -> 1 `i -> 3 `i `Vuc ]
+"24
+[; ;iic.c: 24:     ANSELC &= ~(1<<4);
+[e =& _ANSELC -> ~ << -> 1 `i -> 4 `i `Vuc ]
+"26
+[; ;iic.c: 26:     TRISC |= (1<<3) | (1<<4);
+[e =| _TRISC -> | << -> 1 `i -> 3 `i << -> 1 `i -> 4 `i `Vuc ]
+"28
+[; ;iic.c: 28:     if (freq == 0) {
+[e $ ! == _freq -> -> -> 0 `i `l `ul 856  ]
+{
+"29
+[; ;iic.c: 29:         freq = 10000;
+[e = _freq -> -> -> 10000 `i `l `ul ]
+"30
+[; ;iic.c: 30:     }
+}
+[e :U 856 ]
+"32
+[; ;iic.c: 32:     brg = (8000000ul / (4*freq));
+[e = _brg / -> 8000000 `ul * -> -> -> 4 `i `l `ul _freq ]
+"34
+[; ;iic.c: 34:     if (brg) {
+[e $ ! != _brg -> -> -> 0 `i `l `ul 857  ]
+{
+"35
+[; ;iic.c: 35:         brg -= 1;
+[e =- _brg -> -> -> 1 `i `l `ul ]
+"36
+[; ;iic.c: 36:     }
+}
+[e :U 857 ]
+"37
+[; ;iic.c: 37:     if (brg > 255) {
+[e $ ! > _brg -> -> -> 255 `i `l `ul 858  ]
+{
+"38
+[; ;iic.c: 38:         brg = 255;
+[e = _brg -> -> -> 255 `i `l `ul ]
+"39
+[; ;iic.c: 39:     }
+}
+[e :U 858 ]
+"40
+[; ;iic.c: 40:     SSP1ADD = brg;
+[e = _SSP1ADD -> _brg `uc ]
+"46
+[; ;iic.c: 46:     SSP1CON1 = 0x20 | 0x8;
+[e = _SSP1CON1 -> | -> 32 `i -> 8 `i `uc ]
+"50
+[; ;iic.c: 50:     SSP1STAT = 0x80;
+[e = _SSP1STAT -> -> 128 `i `uc ]
+"51
+[; ;iic.c: 51: }
+[e :UE 855 ]
+}
+"53
+[; ;iic.c: 53: void iic_start(void) {
+[v _iic_start `(v ~T0 @X0 1 ef ]
+{
+[e :U _iic_start ]
+[f ]
+"54
+[; ;iic.c: 54:     iic_waitidle();
+[e ( _iic_waitidle ..  ]
+"56
+[; ;iic.c: 56:     SSP1CON2 |=0x01;
+[e =| _SSP1CON2 -> -> 1 `i `Vuc ]
+"57
+[; ;iic.c: 57:     while (SSP1CON2 & 0x1) {}
+[e $U 860  ]
+[e :U 861 ]
+{
+}
+[e :U 860 ]
+[e $ != & -> _SSP1CON2 `i -> 1 `i -> 0 `i 861  ]
+[e :U 862 ]
+"58
+[; ;iic.c: 58: }
+[e :UE 859 ]
+}
+"60
+[; ;iic.c: 60: void iic_restart() {
+[v _iic_restart `(v ~T0 @X0 1 ef ]
+{
+[e :U _iic_restart ]
+[f ]
+"61
+[; ;iic.c: 61:     iic_waitidle();
+[e ( _iic_waitidle ..  ]
+"62
+[; ;iic.c: 62:     SSP1CON2 |= 0x02;
+[e =| _SSP1CON2 -> -> 2 `i `Vuc ]
+"64
+[; ;iic.c: 64:     while (SSP1CON2 & 0x02) {}
+[e $U 864  ]
+[e :U 865 ]
+{
+}
+[e :U 864 ]
+[e $ != & -> _SSP1CON2 `i -> 2 `i -> 0 `i 865  ]
+[e :U 866 ]
+"65
+[; ;iic.c: 65: }
+[e :UE 863 ]
+}
+"67
+[; ;iic.c: 67: void iic_stop() {
+[v _iic_stop `(v ~T0 @X0 1 ef ]
+{
+[e :U _iic_stop ]
+[f ]
+"68
+[; ;iic.c: 68:     iic_waitidle();
+[e ( _iic_waitidle ..  ]
+"69
+[; ;iic.c: 69:     SSP1CON2 |= 0x04;
+[e =| _SSP1CON2 -> -> 4 `i `Vuc ]
+"70
+[; ;iic.c: 70:     while (SSP1CON2 & 0x4) {}
+[e $U 868  ]
+[e :U 869 ]
+{
+}
+[e :U 868 ]
+[e $ != & -> _SSP1CON2 `i -> 4 `i -> 0 `i 869  ]
+[e :U 870 ]
+"71
+[; ;iic.c: 71: }
+[e :UE 867 ]
+}
+"73
+[; ;iic.c: 73: uint8_t iic_write(uint8_t data) {
+[v _iic_write `(uc ~T0 @X0 1 ef1`uc ]
+{
+[e :U _iic_write ]
+[v _data `uc ~T0 @X0 1 r1 ]
+[f ]
+"74
+[; ;iic.c: 74:     iic_waitidle();
+[e ( _iic_waitidle ..  ]
+"75
+[; ;iic.c: 75:     SSP1BUF = data;
+[e = _SSP1BUF _data ]
+"78
+[; ;iic.c: 78:     while (SSP1STAT & 0x1) {}
+[e $U 872  ]
+[e :U 873 ]
+{
+}
+[e :U 872 ]
+[e $ != & -> _SSP1STAT `i -> 1 `i -> 0 `i 873  ]
+[e :U 874 ]
+"80
+[; ;iic.c: 80:     iic_waitidle();
+[e ( _iic_waitidle ..  ]
+"81
+[; ;iic.c: 81:     return (SSP1CON2 & 0x40) ? 0 : 1;
+[e ) -> ? != & -> _SSP1CON2 `i -> 64 `i -> 0 `i : -> 0 `i -> 1 `i `uc ]
+[e $UE 871  ]
+"82
+[; ;iic.c: 82: }
+[e :UE 871 ]
+}
+"84
+[; ;iic.c: 84: uint8_t iic_read_ack() {
+[v _iic_read_ack `(uc ~T0 @X0 1 ef ]
+{
+[e :U _iic_read_ack ]
+[f ]
+"85
+[; ;iic.c: 85:     uint8_t read_byte;
+[v _read_byte `uc ~T0 @X0 1 a ]
+"86
+[; ;iic.c: 86:     iic_waitidle();
+[e ( _iic_waitidle ..  ]
+"87
+[; ;iic.c: 87:     SSP1CON2 |= 0x8;
+[e =| _SSP1CON2 -> -> 8 `i `Vuc ]
+"90
+[; ;iic.c: 90:     while (!(SSP1STAT & 0x1));
+[e $U 876  ]
+[e :U 877 ]
+[e :U 876 ]
+[e $ ! != & -> _SSP1STAT `i -> 1 `i -> 0 `i 877  ]
+[e :U 878 ]
+"92
+[; ;iic.c: 92:     read_byte = SSP1BUF;
+[e = _read_byte _SSP1BUF ]
+"94
+[; ;iic.c: 94:     iic_waitidle();
+[e ( _iic_waitidle ..  ]
+"95
+[; ;iic.c: 95:     SSP1CON2 &= ~(1<<5);
+[e =& _SSP1CON2 -> ~ << -> 1 `i -> 5 `i `Vuc ]
+"96
+[; ;iic.c: 96:     SSP1CON2 |= (1<<4);
+[e =| _SSP1CON2 -> << -> 1 `i -> 4 `i `Vuc ]
+"97
+[; ;iic.c: 97:     while (SSP1CON2 & (1<<4)) {}
+[e $U 879  ]
+[e :U 880 ]
+{
+}
+[e :U 879 ]
+[e $ != & -> _SSP1CON2 `i << -> 1 `i -> 4 `i -> 0 `i 880  ]
+[e :U 881 ]
+"99
+[; ;iic.c: 99:     return read_byte;
+[e ) _read_byte ]
+[e $UE 875  ]
+"100
+[; ;iic.c: 100: }
+[e :UE 875 ]
+}
+"102
+[; ;iic.c: 102: uint8_t iic_read_nack() {
+[v _iic_read_nack `(uc ~T0 @X0 1 ef ]
+{
+[e :U _iic_read_nack ]
+[f ]
+"103
+[; ;iic.c: 103:     uint8_t read_byte;
+[v _read_byte `uc ~T0 @X0 1 a ]
+"104
+[; ;iic.c: 104:     iic_waitidle();
+[e ( _iic_waitidle ..  ]
+"105
+[; ;iic.c: 105:     SSP1CON2 |= 0x8;
+[e =| _SSP1CON2 -> -> 8 `i `Vuc ]
+"108
+[; ;iic.c: 108:     while (!(SSP1STAT & 0x1)) {}
+[e $U 883  ]
+[e :U 884 ]
+{
+}
+[e :U 883 ]
+[e $ ! != & -> _SSP1STAT `i -> 1 `i -> 0 `i 884  ]
+[e :U 885 ]
+"110
+[; ;iic.c: 110:     read_byte = SSP1BUF;
+[e = _read_byte _SSP1BUF ]
+"111
+[; ;iic.c: 111:     iic_waitidle();
+[e ( _iic_waitidle ..  ]
+"112
+[; ;iic.c: 112:     SSP1CON2 |= (1<<5);
+[e =| _SSP1CON2 -> << -> 1 `i -> 5 `i `Vuc ]
+"113
+[; ;iic.c: 113:     SSP1CON2 |= (1<<4);
+[e =| _SSP1CON2 -> << -> 1 `i -> 4 `i `Vuc ]
+"114
+[; ;iic.c: 114:     while (SSP1CON2 & (1<<4)) {}
+[e $U 886  ]
+[e :U 887 ]
+{
+}
+[e :U 886 ]
+[e $ != & -> _SSP1CON2 `i << -> 1 `i -> 4 `i -> 0 `i 887  ]
+[e :U 888 ]
+"116
+[; ;iic.c: 116:     return read_byte;
+[e ) _read_byte ]
+[e $UE 882  ]
+"117
+[; ;iic.c: 117: }
+[e :UE 882 ]
 }

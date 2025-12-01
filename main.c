@@ -9,7 +9,7 @@
 #include "adc.h"
 #include "iic.h"
 #include "rtc.h"
-#include "heating.h"
+//#include "heating.h"
 
 
 //#define XII_TEMP
@@ -90,4 +90,5 @@ int main(void)
         
          mult_disp();
     }    
+}
 }

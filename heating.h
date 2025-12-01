@@ -11,7 +11,7 @@ extern "C" {
 #endif
 
 //This is where stuff goes!
-    void heating_temp_check(unit16_t celsius)
+    void heating_temp_check(uint16_t celsius);
 
 #ifdef	__cplusplus
 }

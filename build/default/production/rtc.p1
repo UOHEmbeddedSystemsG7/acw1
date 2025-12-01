@@ -1,13 +1,26 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"56 mcc_generated_files/system/src/../../system/clock.h
-[; ;mcc_generated_files/system/src/../../system/clock.h: 56: void CLOCK_Initialize(void);
-[v _CLOCK_Initialize `(v ~T0 @X0 0 ef ]
-"98 mcc_generated_files/system/src/../../system/pins.h
-[; ;mcc_generated_files/system/src/../../system/pins.h: 98: void PIN_MANAGER_Initialize (void);
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"85 mcc_generated_files/system/src/../../system/interrupt.h
-[; ;mcc_generated_files/system/src/../../system/interrupt.h: 85: void INTERRUPT_Initialize (void);
-[v _INTERRUPT_Initialize `(v ~T0 @X0 0 ef ]
+"20 ./iic.h
+[; ;./iic.h: 20: void iic_start();
+[v _iic_start `(v ~T0 @X0 0 e? ]
+"23
+[; ;./iic.h: 23: uint8_t iic_write(uint8_t data);
+[v _iic_write `(uc ~T0 @X0 0 ef1`uc ]
+"22
+[; ;./iic.h: 22: void iic_stop();
+[v _iic_stop `(v ~T0 @X0 0 e? ]
+"21
+[; ;./iic.h: 21: void iic_restart();
+[v _iic_restart `(v ~T0 @X0 0 e? ]
+"24
+[; ;./iic.h: 24: uint8_t iic_read_ack();
+[v _iic_read_ack `(uc ~T0 @X0 0 e? ]
+"25
+[; ;./iic.h: 25: uint8_t iic_read_nack();
+[v _iic_read_nack `(uc ~T0 @X0 0 e? ]
+"14 ./rtc.h
+[; ;./rtc.h: 14: typedef struct { uint8_t second, minute, hour;} rtc_time_t;
+[s S851 `uc 1 `uc 1 `uc 1 ]
+[n S851 . second minute hour ]
 "54 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 54: __asm("ANSELA equ 0F38h");
 [; <" ANSELA equ 0F38h ;# ">
@@ -764,24 +777,196 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17372
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc/pic18f45k22.h: 17372: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"39 mcc_generated_files/system/src/system.c
-[; ;mcc_generated_files/system/src/system.c: 39: void SYSTEM_Initialize(void)
-[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
-"40
-[; ;mcc_generated_files/system/src/system.c: 40: {
+"21 rtc.c
+[; ;rtc.c: 21: static uint8_t dec_to_bcd(uint8_t dec) {
+[v _dec_to_bcd `(uc ~T0 @X0 1 sf1`uc ]
 {
-[e :U _SYSTEM_Initialize ]
+[e :U _dec_to_bcd ]
+[v _dec `uc ~T0 @X0 1 r1 ]
 [f ]
+"22
+[; ;rtc.c: 22:     return ((dec/10) << 4 | (dec%10));
+[e ) -> | << / -> _dec `i -> 10 `i -> 4 `i % -> _dec `i -> 10 `i `uc ]
+[e $UE 852  ]
+"23
+[; ;rtc.c: 23: }
+[e :UE 852 ]
+}
+"25
+[; ;rtc.c: 25: static uint8_t bcd_to_dec(uint8_t bcd) {
+[v _bcd_to_dec `(uc ~T0 @X0 1 sf1`uc ]
+{
+[e :U _bcd_to_dec ]
+[v _bcd `uc ~T0 @X0 1 r1 ]
+[f ]
+"26
+[; ;rtc.c: 26:     return 10*(bcd >> 4) + (bcd & 0xf);
+[e ) -> + * -> 10 `i >> -> _bcd `i -> 4 `i & -> _bcd `i -> 15 `i `uc ]
+[e $UE 853  ]
+"27
+[; ;rtc.c: 27: }
+[e :UE 853 ]
+}
+"29
+[; ;rtc.c: 29: void rtc_write_reg(uint8_t addr, uint8_t data){
+[v _rtc_write_reg `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _rtc_write_reg ]
+[v _addr `uc ~T0 @X0 1 r1 ]
+[v _data `uc ~T0 @X0 1 r2 ]
+[f ]
+"30
+[; ;rtc.c: 30:     iic_start();
+[e ( _iic_start ..  ]
+"31
+[; ;rtc.c: 31:     iic_write((0x32<<1)|0);
+[e ( _iic_write (1 -> | << -> 50 `i -> 1 `i -> 0 `i `uc ]
+"32
+[; ;rtc.c: 32:     iic_write(addr<<4);
+[e ( _iic_write (1 -> << -> _addr `i -> 4 `i `uc ]
+"33
+[; ;rtc.c: 33:     iic_write(data);
+[e ( _iic_write (1 _data ]
+"34
+[; ;rtc.c: 34:     iic_stop();
+[e ( _iic_stop ..  ]
+"35
+[; ;rtc.c: 35: }
+[e :UE 854 ]
+}
+"37
+[; ;rtc.c: 37: void rtc_read_reg(uint8_t addr, uint8_t* buf, uint8_t buf_len) {
+[v _rtc_read_reg `(v ~T0 @X0 1 ef3`uc`*uc`uc ]
+{
+[e :U _rtc_read_reg ]
+[v _addr `uc ~T0 @X0 1 r1 ]
+[v _buf `*uc ~T0 @X0 1 r2 ]
+[v _buf_len `uc ~T0 @X0 1 r3 ]
+[f ]
+"38
+[; ;rtc.c: 38:     iic_start();
+[e ( _iic_start ..  ]
+"39
+[; ;rtc.c: 39:     iic_write((0x32<<1)|0);
+[e ( _iic_write (1 -> | << -> 50 `i -> 1 `i -> 0 `i `uc ]
+"40
+[; ;rtc.c: 40:     iic_write(addr<<4);
+[e ( _iic_write (1 -> << -> _addr `i -> 4 `i `uc ]
 "41
-[; ;mcc_generated_files/system/src/system.c: 41:     CLOCK_Initialize();
-[e ( _CLOCK_Initialize ..  ]
+[; ;rtc.c: 41:     iic_restart();
+[e ( _iic_restart ..  ]
 "42
-[; ;mcc_generated_files/system/src/system.c: 42:     PIN_MANAGER_Initialize();
-[e ( _PIN_MANAGER_Initialize ..  ]
-"43
-[; ;mcc_generated_files/system/src/system.c: 43:     INTERRUPT_Initialize();
-[e ( _INTERRUPT_Initialize ..  ]
+[; ;rtc.c: 42:     iic_write((0x32<<1)|1);
+[e ( _iic_write (1 -> | << -> 50 `i -> 1 `i -> 1 `i `uc ]
 "44
-[; ;mcc_generated_files/system/src/system.c: 44: }
-[e :UE 851 ]
+[; ;rtc.c: 44:     for (uint8_t i=0; i < buf_len; i++) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 859  ]
+[e :U 856 ]
+{
+"45
+[; ;rtc.c: 45:         buf[i] = (i<buf_len-1) ? iic_read_ack() : iic_read_nack();
+[e = *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux -> ? < -> _i `i - -> _buf_len `i -> 1 `i : -> ( _iic_read_ack ..  `i -> ( _iic_read_nack ..  `i `uc ]
+"46
+[; ;rtc.c: 46:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 859 ]
+[e $ < -> _i `i -> _buf_len `i 856  ]
+[e :U 857 ]
+}
+"48
+[; ;rtc.c: 48:     iic_stop();
+[e ( _iic_stop ..  ]
+"49
+[; ;rtc.c: 49: }
+[e :UE 855 ]
+}
+"52
+[; ;rtc.c: 52: void rtc_init() {
+[v _rtc_init `(v ~T0 @X0 1 ef ]
+{
+[e :U _rtc_init ]
+[f ]
+"53
+[; ;rtc.c: 53:     rtc_write_reg(0xE, 0x24);
+[e ( _rtc_write_reg (2 , -> -> 14 `i `uc -> -> 36 `i `uc ]
+"54
+[; ;rtc.c: 54:     rtc_write_reg(0xF, 0x20|0x00);
+[e ( _rtc_write_reg (2 , -> -> 15 `i `uc -> | -> 32 `i -> 0 `i `uc ]
+"55
+[; ;rtc.c: 55: }
+[e :UE 860 ]
+}
+"57
+[; ;rtc.c: 57: void rtc_set_time(rtc_time_t* time) {
+[v _rtc_set_time `(v ~T0 @X0 1 ef1`*S851 ]
+{
+[e :U _rtc_set_time ]
+[v _time `*S851 ~T0 @X0 1 r1 ]
+[f ]
+"58
+[; ;rtc.c: 58:     uint8_t time_buf[3];
+[v _time_buf `uc ~T0 @X0 -> 3 `i a ]
+"59
+[; ;rtc.c: 59:     time_buf[0]=dec_to_bcd(time->second);
+[e = *U + &U _time_buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _time_buf `ui `ux ( _dec_to_bcd (1 . *U _time 0 ]
+"60
+[; ;rtc.c: 60:     time_buf[1]=dec_to_bcd(time->minute);
+[e = *U + &U _time_buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _time_buf `ui `ux ( _dec_to_bcd (1 . *U _time 1 ]
+"61
+[; ;rtc.c: 61:     time_buf[2]=dec_to_bcd(time->hour);
+[e = *U + &U _time_buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _time_buf `ui `ux ( _dec_to_bcd (1 . *U _time 2 ]
+"63
+[; ;rtc.c: 63:     iic_start();
+[e ( _iic_start ..  ]
+"64
+[; ;rtc.c: 64:     iic_write((0x32<<1)|0);
+[e ( _iic_write (1 -> | << -> 50 `i -> 1 `i -> 0 `i `uc ]
+"65
+[; ;rtc.c: 65:     iic_write(0x0<<4);
+[e ( _iic_write (1 -> << -> 0 `i -> 4 `i `uc ]
+"66
+[; ;rtc.c: 66:     iic_write(time_buf[0]);
+[e ( _iic_write (1 *U + &U _time_buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _time_buf `ui `ux ]
+"67
+[; ;rtc.c: 67:     iic_write(time_buf[1]);
+[e ( _iic_write (1 *U + &U _time_buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _time_buf `ui `ux ]
+"68
+[; ;rtc.c: 68:     iic_write(time_buf[2]);
+[e ( _iic_write (1 *U + &U _time_buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _time_buf `ui `ux ]
+"69
+[; ;rtc.c: 69:     iic_stop();
+[e ( _iic_stop ..  ]
+"70
+[; ;rtc.c: 70: }
+[e :UE 861 ]
+}
+"72
+[; ;rtc.c: 72: void rtc_get_time(rtc_time_t* time) {
+[v _rtc_get_time `(v ~T0 @X0 1 ef1`*S851 ]
+{
+[e :U _rtc_get_time ]
+[v _time `*S851 ~T0 @X0 1 r1 ]
+[f ]
+"73
+[; ;rtc.c: 73:     uint8_t time_buf[3];
+[v _time_buf `uc ~T0 @X0 -> 3 `i a ]
+"74
+[; ;rtc.c: 74:     rtc_read_reg(0x0, time_buf,3);
+[e ( _rtc_read_reg (3 , , -> -> 0 `i `uc &U _time_buf -> -> 3 `i `uc ]
+"75
+[; ;rtc.c: 75:     time->second=bcd_to_dec(time_buf[0]);
+[e = . *U _time 0 ( _bcd_to_dec (1 *U + &U _time_buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _time_buf `ui `ux ]
+"76
+[; ;rtc.c: 76:     time->minute=bcd_to_dec(time_buf[1]);
+[e = . *U _time 1 ( _bcd_to_dec (1 *U + &U _time_buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _time_buf `ui `ux ]
+"77
+[; ;rtc.c: 77:     time->hour=bcd_to_dec(time_buf[2]);
+[e = . *U _time 2 ( _bcd_to_dec (1 *U + &U _time_buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _time_buf `ui `ux ]
+"78
+[; ;rtc.c: 78: }
+[e :UE 862 ]
 }

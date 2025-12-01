@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/system/src/clock.c"
+# 1 "iic.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 285 "<built-in>" 3
@@ -6,8 +6,143 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/system/src/clock.c" 2
-# 36 "mcc_generated_files/system/src/clock.c"
+# 1 "iic.c" 2
+# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/builtins.h" 1 3
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 1 3
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/musl_xc8.h" 1 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 2 3
+# 26 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 1 3
+# 133 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
+typedef unsigned __int24 uintptr_t;
+# 148 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
+typedef __int24 intptr_t;
+# 164 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+
+
+
+
+typedef __int24 int24_t;
+
+
+
+
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 194 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 235 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 27 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 2 3
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+typedef int24_t int_fast24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+typedef uint24_t uint_fast24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 148 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/stdint.h" 1 3
+typedef int16_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint16_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 149 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 2 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/builtins.h" 2 3
+
+
+#pragma intrinsic(__nop)
+extern void __nop(void);
+
+#pragma intrinsic(__nopf000)
+extern void __nopf000(void);
+#pragma intrinsic(__nopffff)
+extern void __nopffff(void);
+#pragma intrinsic(__nop0000)
+extern void __nop0000(void);
+
+
+
+#pragma intrinsic(_delay)
+extern __attribute__((nonreentrant)) void _delay(uint32_t);
+#pragma intrinsic(_delaywdt)
+extern __attribute__((nonreentrant)) void _delaywdt(uint32_t);
+
+#pragma intrinsic(_delay3)
+extern __attribute__((nonreentrant)) void _delay3(uint8_t);
+# 2 "iic.c" 2
+# 1 "./iic.h" 1
+
+# 1 "./mcc_generated_files/system/system.h" 1
+# 39 "./mcc_generated_files/system/system.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20,16 +155,7 @@ extern double __fpnormalize(double);
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdlib.h" 1 3
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/musl_xc8.h" 1 3
-# 5 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdlib.h" 2 3
-
-
-
-
-
+# 10 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdlib.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/features.h" 1 3
 # 11 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdlib.h" 2 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdlib.h" 3
@@ -38,10 +164,6 @@ extern double __fpnormalize(double);
 typedef long int wchar_t;
 # 128 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
 typedef unsigned size_t;
-# 174 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 210 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
-typedef __uint24 uint24_t;
 # 22 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdlib.h" 2 3
 
 int atoi (const char *);
@@ -125,125 +247,7 @@ uldiv_t uldiv (unsigned long, unsigned long);
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 # 24 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/builtins.h" 1 3
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 1 3
-# 26 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 1 3
-# 133 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
-typedef unsigned __int24 uintptr_t;
-# 148 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
-typedef __int24 intptr_t;
-# 164 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
-typedef signed char int8_t;
-
-
-
-
-typedef short int16_t;
-# 179 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 194 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-# 215 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 235 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 27 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 2 3
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-typedef int24_t int_fast24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-typedef uint24_t uint_fast24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 148 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/stdint.h" 1 3
-typedef int16_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint16_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 149 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 2 3
-# 5 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/builtins.h" 2 3
-
-
-#pragma intrinsic(__nop)
-extern void __nop(void);
-
-#pragma intrinsic(__nopf000)
-extern void __nopf000(void);
-#pragma intrinsic(__nopffff)
-extern void __nopffff(void);
-#pragma intrinsic(__nop0000)
-extern void __nop0000(void);
-
-
-
-#pragma intrinsic(_delay)
-extern __attribute__((nonreentrant)) void _delay(uint32_t);
-#pragma intrinsic(_delaywdt)
-extern __attribute__((nonreentrant)) void _delaywdt(uint32_t);
-
-#pragma intrinsic(_delay3)
-extern __attribute__((nonreentrant)) void _delay3(uint8_t);
-# 25 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
-
-
-
-
-
-
-
-
+# 33 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 3
 # 1 "C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\\pic\\include/pic18.h" 1 3
 
 
@@ -9640,21 +9644,194 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
-# 37 "mcc_generated_files/system/src/clock.c" 2
-# 1 "mcc_generated_files/system/src/../clock.h" 1
-# 56 "mcc_generated_files/system/src/../clock.h"
-void CLOCK_Initialize(void);
-# 38 "mcc_generated_files/system/src/clock.c" 2
+# 40 "./mcc_generated_files/system/system.h" 2
 
-void CLOCK_Initialize(void)
+# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdbool.h" 1 3
+# 42 "./mcc_generated_files/system/system.h" 2
+# 1 "./mcc_generated_files/system/config_bits.h" 1
+# 39 "./mcc_generated_files/system/config_bits.h"
+# 1 "./mcc_generated_files/system/../system/clock.h" 1
+# 56 "./mcc_generated_files/system/../system/clock.h"
+void CLOCK_Initialize(void);
+# 40 "./mcc_generated_files/system/config_bits.h" 2
+# 43 "./mcc_generated_files/system/system.h" 2
+# 1 "./mcc_generated_files/system/../system/pins.h" 1
+# 98 "./mcc_generated_files/system/../system/pins.h"
+void PIN_MANAGER_Initialize (void);
+
+
+
+
+
+
+
+void PIN_MANAGER_IOC(void);
+# 44 "./mcc_generated_files/system/system.h" 2
+# 1 "./mcc_generated_files/system/../system/interrupt.h" 1
+# 85 "./mcc_generated_files/system/../system/interrupt.h"
+void INTERRUPT_Initialize (void);
+# 219 "./mcc_generated_files/system/../system/interrupt.h"
+void INT0_ISR(void);
+# 228 "./mcc_generated_files/system/../system/interrupt.h"
+void INT0_CallBack(void);
+# 237 "./mcc_generated_files/system/../system/interrupt.h"
+void INT0_SetInterruptHandler(void (* InterruptHandler)(void));
+# 246 "./mcc_generated_files/system/../system/interrupt.h"
+extern void (*INT0_InterruptHandler)(void);
+# 255 "./mcc_generated_files/system/../system/interrupt.h"
+void INT0_DefaultInterruptHandler(void);
+# 264 "./mcc_generated_files/system/../system/interrupt.h"
+void INT1_ISR(void);
+# 273 "./mcc_generated_files/system/../system/interrupt.h"
+void INT1_CallBack(void);
+# 282 "./mcc_generated_files/system/../system/interrupt.h"
+void INT1_SetInterruptHandler(void (* InterruptHandler)(void));
+# 291 "./mcc_generated_files/system/../system/interrupt.h"
+extern void (*INT1_InterruptHandler)(void);
+# 300 "./mcc_generated_files/system/../system/interrupt.h"
+void INT1_DefaultInterruptHandler(void);
+# 309 "./mcc_generated_files/system/../system/interrupt.h"
+void INT2_ISR(void);
+# 318 "./mcc_generated_files/system/../system/interrupt.h"
+void INT2_CallBack(void);
+# 327 "./mcc_generated_files/system/../system/interrupt.h"
+void INT2_SetInterruptHandler(void (* InterruptHandler)(void));
+# 336 "./mcc_generated_files/system/../system/interrupt.h"
+extern void (*INT2_InterruptHandler)(void);
+# 345 "./mcc_generated_files/system/../system/interrupt.h"
+void INT2_DefaultInterruptHandler(void);
+# 45 "./mcc_generated_files/system/system.h" 2
+# 54 "./mcc_generated_files/system/system.h"
+void SYSTEM_Initialize(void);
+# 3 "./iic.h" 2
+# 19 "./iic.h"
+void iic_init(uint32_t freq);
+void iic_start();
+void iic_restart();
+void iic_stop();
+uint8_t iic_write(uint8_t data);
+uint8_t iic_read_ack();
+uint8_t iic_read_nack();
+
+void eeprom_write_byte(uint16_t addr, uint8_t data);
+uint8_t eeprom_read_byte(uint16_t addr);
+
+
+uint8_t press_ra4();
+uint8_t press_ra5();
+# 3 "iic.c" 2
+
+
+
+
+
+
+
+
+static void iic_waitidle(void)
 {
-    OSCCON = (0 << 0x0)
-        | (6 << 0x4)
-        | (0 << 0x7);
-    OSCCON2 = (1 << 0x2)
-        | (0 << 0x3)
-        | (0 << 0x4);
-    OSCTUNE = (0 << 0x0)
-        | (0 << 0x6)
-        | (0 << 0x7);
+    while ((SSP1CON2 & 0x1F) ||
+           (SSP1STAT & 0x4))
+
+    {
+    }
+}
+
+void iic_init(uint32_t freq)
+{
+    uint32_t brg;
+    ANSELC &= ~(1<<3);
+    ANSELC &= ~(1<<4);
+
+    TRISC |= (1<<3) | (1<<4);
+
+    if (freq == 0) {
+        freq = 10000;
+    }
+
+    brg = (8000000ul / (4*freq));
+
+    if (brg) {
+        brg -= 1;
+    }
+    if (brg > 255) {
+        brg = 255;
+    }
+    SSP1ADD = brg;
+
+
+
+
+
+    SSP1CON1 = 0x20 | 0x8;
+
+
+
+    SSP1STAT = 0x80;
+}
+
+void iic_start(void) {
+    iic_waitidle();
+
+    SSP1CON2 |=0x01;
+    while (SSP1CON2 & 0x1) {}
+}
+
+void iic_restart() {
+    iic_waitidle();
+    SSP1CON2 |= 0x02;
+
+    while (SSP1CON2 & 0x02) {}
+}
+
+void iic_stop() {
+    iic_waitidle();
+    SSP1CON2 |= 0x04;
+    while (SSP1CON2 & 0x4) {}
+}
+
+uint8_t iic_write(uint8_t data) {
+    iic_waitidle();
+    SSP1BUF = data;
+
+
+    while (SSP1STAT & 0x1) {}
+
+    iic_waitidle();
+    return (SSP1CON2 & 0x40) ? 0 : 1;
+}
+
+uint8_t iic_read_ack() {
+    uint8_t read_byte;
+    iic_waitidle();
+    SSP1CON2 |= 0x8;
+
+
+    while (!(SSP1STAT & 0x1));
+
+    read_byte = SSP1BUF;
+
+    iic_waitidle();
+    SSP1CON2 &= ~(1<<5);
+    SSP1CON2 |= (1<<4);
+    while (SSP1CON2 & (1<<4)) {}
+
+    return read_byte;
+}
+
+uint8_t iic_read_nack() {
+    uint8_t read_byte;
+    iic_waitidle();
+    SSP1CON2 |= 0x8;
+
+
+    while (!(SSP1STAT & 0x1)) {}
+
+    read_byte = SSP1BUF;
+    iic_waitidle();
+    SSP1CON2 |= (1<<5);
+    SSP1CON2 |= (1<<4);
+    while (SSP1CON2 & (1<<4)) {}
+
+    return read_byte;
 }
