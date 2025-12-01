@@ -45,10 +45,21 @@
       <itemPath>main.c</itemPath>
       <itemPath>sevenseg.c</itemPath>
       <itemPath>sevenseg.h</itemPath>
+      <itemPath>rtc.c</itemPath>
+      <itemPath>adc.c</itemPath>
+      <itemPath>adc.h</itemPath>
+      <itemPath>iic.c</itemPath>
+      <itemPath>iic.h</itemPath>
+      <itemPath>rtc.h</itemPath>
+      <itemPath>README.md</itemPath>
+      <itemPath>mcc-manifest-autosave.yml</itemPath>
+      <itemPath>mcc-manifest-generated-success.yml</itemPath>
+      <itemPath>heating.c</itemPath>
+      <itemPath>heating.h</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>src</Elem>
+    <Elem></Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
