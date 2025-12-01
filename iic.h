@@ -24,9 +24,6 @@ uint8_t iic_write(uint8_t data);
 uint8_t iic_read_ack();
 uint8_t iic_read_nack();
 
-void eeprom_write_byte(uint16_t addr, uint8_t data);
-uint8_t eeprom_read_byte(uint16_t addr);
-
 
 uint8_t press_ra4();
 uint8_t press_ra5();
