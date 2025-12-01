@@ -25,6 +25,7 @@ uint64_t ms = 0;
 
 
 
+uint16_t celsius = 22;
 
 int main(void)
 {
@@ -73,6 +74,11 @@ int main(void)
 
     }
     
+    
+    TRISC = 0x00;
+    
+    while(1)
+    {
     
     TRISC = 0x00;
     
