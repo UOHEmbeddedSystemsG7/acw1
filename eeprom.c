@@ -17,21 +17,21 @@
 // EEPROM has 1K * 8 bit (1024B) of memory
 
 
-static uint8_t _M24C08_build_write_addr(uint32_t addr) {
+static uint8_t _M24C08_build_write_addr(uint16_t addr) {
     uint8_t top_two = (addr >> 8) & 0x03;
     
     //                      ADDR |        ENABLE BIT | TOP TWO BITS | WRITE(0)
     return (uint8_t)((0b1010 << 4) | (M2408_E2 << 3) | (top_two<<1) | 0);
 }
 
-static uint8_t _M24C08_build_read_addr(uint32_t addr) {
+static uint8_t _M24C08_build_read_addr(uint16_t addr) {
     uint8_t top_two = (addr >> 8) & 0x03;
     
     //                      ADDR    |     ENABLE BIT | TOP TWO BITS | READ(1)
     return (uint8_t)((0b1010 << 4) | (M2408_E2 << 3) | (top_two<<1) | 1);
 }
 
-void eeprom_write_byte(uint32_t addr, uint8_t data) {
+void eeprom_write_byte(uint16_t addr, uint8_t data) {
     uint8_t device_write = _M24C08_build_write_addr(addr);
     uint8_t addr_lsb = (uint8_t)(addr & 0xff); // extract lower byte.
     uint8_t attempts = 0;
@@ -66,7 +66,7 @@ void eeprom_write_byte(uint32_t addr, uint8_t data) {
     }
 }
 
-uint8_t eeprom_read_byte(uint32_t addr) {
+uint8_t eeprom_read_byte(uint16_t addr) {
     uint8_t write_addr = _M24C08_build_write_addr(addr);
     uint8_t read_addr = _M24C08_build_read_addr(addr);
     
