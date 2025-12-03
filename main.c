@@ -5,45 +5,72 @@
 #endif 
 
 
-#include "ui.h"
+
 #include "iic.h"
-#include "debounce.h"
+#include "sevenseg.h"
+#include "adc.h"
+#include "iic.h"
+#include "rtc.h"
 
 
+//#define XII_TEMP
 uint16_t celsius = 0;
+
+#define XII_TIME
+rtc_time_t now;
+uint64_t ms = 0;
+
+#if defined(XII_TEMP) && defined(XII_TIME)
+#error "Only define XII_TEMP or XII_TIME, not both"
+#endif
+
+
+
 
 int main(void)
 {
     SYSTEM_Initialize();
-    // If using interrupts in PIC18 High/Low Priority Mode you need to enable the Global High and Low Interrupts 
-    // If using interrupts in PIC Mid-Range Compatibility Mode you need to enable the Global and Peripheral Interrupts 
-    // Use the following macros to: 
 
-    // Enable the Global Interrupts 
-    //INTERRUPT_GlobalInterruptEnable(); 
+    // Keep this ordering of inits
+    adc_init();
+    
+    iic_init(100000ul);
+    
+    rtc_init();
+    
+    xiiseg_init();
 
-    // Disable the Global Interrupts 
-    //INTERRUPT_GlobalInterruptDisable(); 
+    while(1)
+    {
+        // we want this on ISR prob
+        mult_disp();
 
-    // Enable the Peripheral Interrupts 
-    //INTERRUPT_PeripheralInterruptEnable(); 
+        
+        
+        
+    #ifdef XII_TEMP
+        celsius = adc_to_celsius(read_adc());
+        
+      
+        xiiseg_display(3, 0x39); // 0x39 is the hex for C
+        xiiseg_display(2, digits[celsius % 10u]);
+        xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
+        xiiseg_display(0, digits[(celsius / 100) % 10]);
+    #endif
 
-    // Disable the Peripheral Interrupts 
-    //INTERRUPT_PeripheralInterruptDisable(); 
-//
-//    xiiseg_init();
-//    adc_init();
-//
-//    while(1)
-//    {
-//        celsius = adc_to_celsius(read_adc());
-//        
-//      
-//        xiiseg_display(3, 0x39); // 0x39 is the hex for C
-//        xiiseg_display(2, digits[celsius % 10u]);
-//        xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
-//        xiiseg_display(0, digits[(celsius / 100) % 10]);
-//        
-//        mult_disp();
-//    }    
+    #ifdef XII_TIME
+        
+        xiiseg_display(3, digits[now.second % 10u]);
+        xiiseg_display(2, digits[(now.second / 10) % 10]);
+        xiiseg_display(1, digits[now.minute % 10u]);
+        xiiseg_display(0, digits[(now.minute / 10) % 10]);
+        
+        ms+= 1;
+        if (ms > 500) {
+            ms=0l;
+            rtc_get_time(&now);
+        }
+    #endif
+
+    }
 }
