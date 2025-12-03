@@ -4,7 +4,7 @@
 #include "debounce.h"
 
 uint8_t btn_dec() {
-  uint8_t raw = PORTCbits.RC7 ? 1u : 0u;
+  uint8_t raw = PORTCbits.RC6 ? 1u : 0u;
   return debounce(raw, &state_dec);
 }
 
