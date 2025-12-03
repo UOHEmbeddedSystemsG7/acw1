@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 #ifndef MCC
@@ -6,6 +7,9 @@
 #define MCC
 #endif
 >>>>>>> 2f84105 (resolved main)
+=======
+
+>>>>>>> c6cd7da (resolved main.c)
 /*
  * File:   iic.h
  * Author: 719588
@@ -17,18 +21,25 @@
 #define DB_H
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <stdint.h>
+=======
+>>>>>>> c6cd7da (resolved main.c)
 #ifndef MCC
 #include "mcc_generated_files/system/system.h"
 #define MCC
 #endif
 
+<<<<<<< HEAD
 =======
 >>>>>>> 2f84105 (resolved main)
+=======
+>>>>>>> c6cd7da (resolved main.c)
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 typedef struct {
@@ -75,6 +86,22 @@ inline uint8_t debounce(char bit) {
 
 }
 >>>>>>> 2f84105 (resolved main)
+=======
+uint8_t btn_dec();
+uint8_t btn_inc();
+uint8_t btn_sel();
+uint8_t btn_cyc();
+    
+//uint8_t press_ra4() {
+//  return debounce(PORTBbits.RB4);
+//}
+//
+//uint8_t press_ra5() {
+//  return debounce(PORTBbits.RB5);
+//}
+//
+//uint8_t debounce(unsigned char bit);
+>>>>>>> c6cd7da (resolved main.c)
 
 #ifdef __cplusplus
 }
