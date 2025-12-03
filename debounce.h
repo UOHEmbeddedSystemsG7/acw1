@@ -9,6 +9,7 @@
 #ifndef DB_H
 #define DB_H
 
+#include <stdint.h>
 #ifndef MCC
 #include "mcc_generated_files/system/system.h"
 #define MCC
@@ -18,20 +19,15 @@
 extern "C" {
 #endif
 
-uint8_t btn_dec();
-uint8_t btn_inc();
-uint8_t btn_sel();
-uint8_t btn_cyc();
-    
-//uint8_t press_ra4() {
-//  return debounce(PORTBbits.RB4);
-//}
-//
-//uint8_t press_ra5() {
-//  return debounce(PORTBbits.RB5);
-//}
-//
-//uint8_t debounce(unsigned char bit);
+
+typedef struct {
+  uint8_t last;
+  uint8_t stable;
+  uint8_t count;
+} debounce_state_t;
+
+uint8_t debounce(uint8_t raw, debounce_state_t* state);
+
 
 #ifdef __cplusplus
 }

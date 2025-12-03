@@ -93,39 +93,3 @@ uint8_t iic_read_nack() {
     
     return read_byte;
 }
-
-
-uint8_t press_ra4() {
-  return debounce(PORTBbits.RB4);
-}
-
-uint8_t press_ra5() {
-  return debounce(PORTBbits.RB5);
-}
-
-
-inline uint8_t debounce(char bit) {
-  static unsigned char last = 0;
-  static unsigned char stable = 0;
-  static unsigned char count = 0;
-
-  unsigned char raw = bit ? 1u : 0u;
-
-  if (raw == stable) { 
-    if (count < 5u)  count++;
-  }
-  
-  else { 
-    count = 0; 
-    stable = 0;
-  }
-
-  if (count >= 5u) {
-    if (stable && !last) {
-      last = 1;
-      return 1;
-    }
-    if (!stable) last = 0;
-  }
-
-}
