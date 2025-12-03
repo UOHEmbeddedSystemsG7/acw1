@@ -22,9 +22,13 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <stdint.h>
 =======
 >>>>>>> c6cd7da (resolved main.c)
+=======
+#include <stdint.h>
+>>>>>>> 02f09a5 (resolved iic)
 #ifndef MCC
 #include "mcc_generated_files/system/system.h"
 #define MCC
@@ -41,6 +45,9 @@ extern "C" {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02f09a5 (resolved iic)
 
 typedef struct {
   uint8_t last;
@@ -50,6 +57,7 @@ typedef struct {
 
 uint8_t debounce(uint8_t raw, debounce_state_t* state);
 
+<<<<<<< HEAD
 =======
 uint8_t press_ra4() {
   return debounce(RA4_bit);
@@ -102,6 +110,8 @@ uint8_t btn_cyc();
 //
 //uint8_t debounce(unsigned char bit);
 >>>>>>> c6cd7da (resolved main.c)
+=======
+>>>>>>> 02f09a5 (resolved iic)
 
 #ifdef __cplusplus
 }

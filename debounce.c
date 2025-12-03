@@ -1,5 +1,8 @@
 #include <builtins.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02f09a5 (resolved iic)
 #include <stdint.h>
 #include "debounce.h"
 
@@ -25,6 +28,7 @@ uint8_t debounce(uint8_t raw, debounce_state_t* state) {
   }
 
   return 0;
+<<<<<<< HEAD
 }
 =======
 #include "debounce.h"
@@ -156,3 +160,6 @@ uint8_t button_cyc() {
 //
 //}
 >>>>>>> c6cd7da (resolved main.c)
+=======
+}
+>>>>>>> 02f09a5 (resolved iic)
