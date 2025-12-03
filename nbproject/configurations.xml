@@ -50,6 +50,8 @@
       <itemPath>README.md</itemPath>
       <itemPath>ui.c</itemPath>
       <itemPath>ui.h</itemPath>
+      <itemPath>buzzer.c</itemPath>
+      <itemPath>buzzer.h</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
