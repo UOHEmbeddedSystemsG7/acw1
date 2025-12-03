@@ -8,7 +8,7 @@
 
 #include "iic.h"
 #include "sevenseg.h"
-#include "adc.h"
+
 #include "iic.h"
 #include "rtc.h"
 #include "eeprom.h"
