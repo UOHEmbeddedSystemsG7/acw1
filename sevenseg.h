@@ -22,7 +22,7 @@ uint8_t _disp[4];
 void xiiseg_init();
 void xiiseg_display(uint8_t index, uint8_t value);
 void xiiseg_display_temp(uint16_t value);
-void mult_disp();
+void xiiseg_multiplex();
 
     
 
