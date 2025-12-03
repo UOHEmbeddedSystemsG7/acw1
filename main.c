@@ -8,12 +8,10 @@
 
 #include "sevenseg.h"
 #include "iic.h"
-#include "sevenseg.h"
-#include "iic.h"
 #include "rtc.h"
 #include "eeprom.h"
 #include "debounce.h"
-#include "iic.h"
+#include "adc.h"
 
 
 //#define XII_TEMP
