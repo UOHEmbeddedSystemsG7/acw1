@@ -1,7 +1,7 @@
 
+#include <xc.h>
 #ifndef MCC
 #include "mcc_generated_files/system/system.h"
-#include <xc.h>
 #define MCC
 #endif
 /*
@@ -11,8 +11,8 @@
  * Created on 14 November 2025, 10:28
  */
 
-#ifndef IIC_H
-#define IIC_H
+#ifndef BUZZER_H
+#define BUZZER_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -35,21 +35,8 @@ extern "C" {
 #define WAIT_AFTER_SING 5
 
 
-// TODO: add duty cycle to this
-void chirp(uint16_t freq) {
-  const uint16_t freq_half = freq << 1;
-  const uint16_t delay = 1000000UL/freq_half;  
-  LATCbits.LATC2 = 1;
-  __delay_us(delay);
-  LATCbits.LATC2 = 0;
-  __delay_us(delay);
-}
-
-void sing(uint16_t freq, uint16_t duration) {
-  const uint16_t loops = (duration - WAIT_AFTER_SING) * freq / 1000UL;
-  for (uint16_t i = 0; i < loops; i++) chirp(freq);
-  __delay_ms(WAIT_AFTER_SING);
-}
+void chirp(uint16_t freq, uint8_t duty);
+void sing(uint16_t freq, uint16_t duration, uint8_t duty);
 
 
 
