@@ -5,8 +5,8 @@
 #endif 
 
 
-#include "sevenseg.h"
-//#include "adc.h"
+#include "ui.h"
+#include "iic.h"
 #include "debounce.h"
 
 

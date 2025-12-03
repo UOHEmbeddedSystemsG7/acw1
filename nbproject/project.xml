@@ -10,6 +10,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>src</sourceRootElem>
+                <sourceRootElem>mcc_generated_files/system</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
