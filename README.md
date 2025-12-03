@@ -25,14 +25,14 @@
 |      | 5   |     | 
 |      | 6   |     | 
 |      | 7   |     |
-| C    | 0   | Buttons    | 
-|      | 1   | ^^^ | 
-|      | 2   | ^^^ | 
+| C    | 0   | BTN: Cycle    | 
+|      | 1   | BTN: Select | 
+|      | 2   |     | 
 |      | 3   | I2C SCK |
 |      | 4   |  I2C SDA | 
-|      | 5   | Buttons | 
-|      | 6   | ^^^ | 
-|      | 7   | ^^^ |
+|      | 5   |     | 
+|      | 6   | BTN: Increment | 
+|      | 7   | BTN: Decrement |
 | D    | 0   | 7-Seg display | 
 |      | 1   | ^^^ | 
 |      | 2   | ^^^ | 

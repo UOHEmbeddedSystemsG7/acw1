@@ -1,4 +1,5 @@
 #include <builtins.h>
+#include <stdint.h>
 #include "adc.h"
 
 uint16_t VREF_mV = 3300u;   // 3300u for if J5 3.3mV and 5000u for if J5 5mV
