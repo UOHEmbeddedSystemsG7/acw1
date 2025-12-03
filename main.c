@@ -10,6 +10,7 @@
 #include "iic.h"
 #include "rtc.h"
 #include "eeprom.h"
+#include "ui.h"
 
 
 //#define XII_TEMP
@@ -61,11 +62,12 @@ int main(void)
         
         
     #ifdef XII_COUNT
-        if (PORTCbits.RC0 == 0) {
+        if (btn_inc()) {
             counter++;
             __delay_ms(10);
         }
-        if (PORTCbits.RC1 == 0) {
+        
+        if (btn_dec()) {
             counter--;
             __delay_ms(10);
         }

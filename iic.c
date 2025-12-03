@@ -115,4 +115,3 @@ uint8_t iic_read_nack() {
     
     return read_byte;
 }
-
