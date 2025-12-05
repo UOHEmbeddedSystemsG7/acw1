@@ -1,5 +1,6 @@
 #include <builtins.h>
 #include "lcd.h"
+#include "rtc.h"
 
 
 void lcd_init(){
@@ -112,6 +113,75 @@ void lcd_write_temp(char row, char col, int celsius){
     set_cursor(row, (col +5));
     write_data_char(67);
     
+}
+
+void lcd_write_time(char row, char col, rtc_time_t *time_now, rtc_time_t *time_previous) {
+    
+    
+    if (time_now->hour != time_previous->hour) {
+        set_cursor(row,col);
+        write_data_char(((time_now->hour / 10) % 10) + 48);
+
+        set_cursor(row,col+1);
+        write_data_char(((time_now->hour / 1) % 10) + 48);
+
+        set_cursor(row,col+2);
+        write_data_char(58); // :
+    }
+    
+    if (time_now->minute != time_previous->minute) {
+        set_cursor(row,col+3);
+        write_data_char(((time_now->minute / 10) % 10) + 48);
+
+        set_cursor(row,col+4);
+        write_data_char(((time_now->minute / 1) % 10) + 48);
+
+        set_cursor(row,col+5);
+        write_data_char(58); 
+    }
+    
+    if (time_now->second != time_previous->second) {
+        set_cursor(row,col+6);
+        write_data_char(((time_now->second / 10) % 10) + 48);
+
+        set_cursor(row,col+7);
+        write_data_char(((time_now->second / 1) % 10) + 48);
+    }
+}
+
+void lcd_write_date(char row, char col, rtc_date_t *date_now, rtc_date_t *date_previous) {
+    if (date_now->day != date_previous->day || 
+        date_now->month != date_previous->month || 
+        date_now->year != date_previous->year) {
+    
+   
+        set_cursor(row,col);
+        write_data_char(((date_now->day / 10) % 10) + 48);
+
+        set_cursor(row,col+1);
+        write_data_char(((date_now->day / 1) % 10) + 48);
+
+        set_cursor(row,col+2);
+        write_data_char(47); // /
+    
+    
+
+        set_cursor(row,col+3);
+        write_data_char(((date_now->month / 10) % 10) + 48);
+
+        set_cursor(row,col+4);
+        write_data_char(((date_now->month / 1) % 10) + 48);
+
+        set_cursor(row,col+5);
+        write_data_char(47); // /
+    
+
+        set_cursor(row,col+6);
+        write_data_char(((date_now->year / 10) % 10) + 48);
+
+        set_cursor(row,col+7);
+        write_data_char(((date_now->year / 1) % 10) + 48);
+    }
 }
 
 /*
