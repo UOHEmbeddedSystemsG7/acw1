@@ -13,6 +13,7 @@
 #include "eeprom.h"
 #include "ui.h"
 #include "lcd.h"
+#include "heating.h"
 
 
 
@@ -45,6 +46,8 @@ int main(void)
     rtc_init();
     xiiseg_init();
     lcd_init();
+    heating_init();
+
     
     // button init?
     TRISC |= 0xC3;
@@ -112,6 +115,7 @@ int main(void)
         // we want this on ISR prob
         xiiseg_multiplex();
         
+        
         celsius = adc_to_celsius(read_adc());
         
         xiiseg_display(3, 0x39); // 0x39 is the hex for C
@@ -119,7 +123,13 @@ int main(void)
         xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
         xiiseg_display(0, digits[(celsius / 100) % 10]);
 
+
         // LCD
+        
+        heating_logic(celsius, heating_lower, heating_upper);
+        
+        // LCDTIME/DATE
+
         // run this every ~100 loops
         if (main_loop_count - lcd_last_run_count >= 100){
             if (screen_swapped) {
