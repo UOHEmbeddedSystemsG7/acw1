@@ -15,15 +15,17 @@
 
 
 
-//#define XII_TEMP
+
 uint16_t celsius = 0;
 
-//#define XII_TIME
-rtc_time_t now;
-uint64_t ms = 0;
+rtc_time_t time_now;
+rtc_time_t time_before;
+rtc_date_t date_now;
+rtc_date_t date_before;
 
-//#define XII_COUNT
-uint8_t counter = 0;
+uint32_t main_loop_count = 0;
+uint32_t lcd_last_run_count = 0;
+uint32_t rtc_last_fetch_count = 0;
 
 // lcd
 uint8_t lcd_counter = 0;
@@ -36,89 +38,52 @@ uint8_t lcd_counter = 0;
 #endif
 
 
-
 int main(void)
 {
     SYSTEM_Initialize();
 
     // Keep this ordering of inits
     adc_init();
-    
     iic_init(100000ul);
-    
     rtc_init();
-    
     xiiseg_init();
-    
-    // lcd
     lcd_init();
-    lcd_write_string(1,1,"Board test");
-    
-#ifdef XII_COUNT
-    counter = eeprom_read_byte(EEPROM_ADDR_COUNTER);
-    TRISC = 0xff;
-    ANSELC = 0;
-#endif
-    
+
     while(1)
     {
         // we want this on ISR prob
         xiiseg_multiplex();
         
-        
-        lcd_counter++;
-        if (lcd_counter >= 100){    // counter added to delay refreshes
-            lcd_write_temp(2,1,celsius);
-            lcd_counter = 0;
-        }
-        
-
-        
-    #ifdef XII_COUNT
-        if (btn_inc()) {
-            counter++;
-            __delay_ms(10);
-        }
-        
-        if (btn_dec()) {
-            counter--;
-            __delay_ms(10);
-        }
-        xiiseg_display(3, digits[counter % 10u]);
-        xiiseg_display(2, digits[(counter / 10) % 10]);
-        xiiseg_display(1, digits[(counter / 100) % 10]);
-        
-        ms++;
-        if (ms > 500) { // approx every 3 seconds
-            ms=0;
-            eeprom_write_byte(EEPROM_ADDR_COUNTER, counter);
-            
-        }
-    #endif
-
-    #ifdef XII_TEMP
         celsius = adc_to_celsius(read_adc());
         
-      
         xiiseg_display(3, 0x39); // 0x39 is the hex for C
         xiiseg_display(2, digits[celsius % 10u]);
         xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
         xiiseg_display(0, digits[(celsius / 100) % 10]);
-    #endif
-
-    #ifdef XII_TIME
         
-        xiiseg_display(3, digits[now.second % 10u]);
-        xiiseg_display(2, digits[(now.second / 10) % 10]);
-        xiiseg_display(1, digits[now.minute % 10u]);
-        xiiseg_display(0, digits[(now.minute / 10) % 10]);
         
-        ms+= 1;
-        if (ms > 500) {
-            ms=0l;
-            rtc_get_time(&now);
+        
+        // LCDTIME/DATE
+        // run this every ~100 loops
+        if (main_loop_count - lcd_last_run_count >= 100){
+            lcd_write_date(1,9, &date_now, &date_before);
+            lcd_write_time(2,9, &time_now, &time_before);
+            
+            date_before = date_now;
+            time_before = time_now;
+            
         }
-    #endif
-
+       
+        
+        // RTC Refresh
+        // run every ~500
+        if (main_loop_count - rtc_last_fetch_count >= 500) {
+            main_loop_count=0l;
+            rtc_get_time(&time_now);
+            rtc_get_date(&date_now); // can be removed if wanted quicker
+        }
+        
+        
+        main_loop_count+= 1;
     }
 }
