@@ -1,7 +1,20 @@
 #include <builtins.h>
 #include "lcd.h"
 
-void init_lcd_display(){
+
+void lcd_init(){
+    ANSELB = 0x00;  // make port B digital
+    
+    // Set B0 to B5 as outputs
+    TRISBbits.TRISB0 = 0;
+    TRISBbits.TRISB1 = 0;
+    TRISBbits.TRISB2 = 0;
+    TRISBbits.TRISB3 = 0;
+    TRISBbits.TRISB4 = 0;
+    TRISBbits.TRISB5 = 0;
+    
+    PORTB = 0x00; // Clear port B
+    
     __delay_ms(40);     // wait for LCD to power up
     
     for(int i = 0; i < 3; i++){
@@ -28,20 +41,6 @@ void init_lcd_display(){
     // Clears the display
     write_cmd(0x01);
     __delay_ms(5);
-}
-
-void set_up_B_port(){
-    ANSELB = 0x00;  // make port B digital
-    
-    // Set B0 to B5 as outputs
-    TRISBbits.TRISB0 = 0;
-    TRISBbits.TRISB1 = 0;
-    TRISBbits.TRISB2 = 0;
-    TRISBbits.TRISB3 = 0;
-    TRISBbits.TRISB4 = 0;
-    TRISBbits.TRISB5 = 0;
-    
-    PORTB = 0x00; // Clear port B
 }
 
 void write_cmd(char cmd){

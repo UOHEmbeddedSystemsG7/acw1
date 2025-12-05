@@ -21,12 +21,11 @@ extern "C" {
 #endif
 
 // Function declarations
-void init_lcd_display();
+void lcd_init();
 void write_data_char(char char_data);
 void write_cmd(char cmd);
 void write_nibble(char nibble);
 void set_cursor(char row, char col);
-void set_up_B_port();
 void write_data_string(char *text);
     
     
