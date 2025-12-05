@@ -11,6 +11,8 @@
 #include "rtc.h"
 #include "eeprom.h"
 #include "ui.h"
+#include "lcd.h"
+
 
 
 //#define XII_TEMP
@@ -23,6 +25,8 @@ uint64_t ms = 0;
 //#define XII_COUNT
 uint8_t counter = 0;
 
+// lcd
+uint8_t lcd_counter = 0;
 
 #if (defined(XII_TEMP) && defined(XII_TIME))   || \
     (defined(XII_TEMP) && defined(XII_COUNT)) || \
@@ -46,6 +50,10 @@ int main(void)
     
     xiiseg_init();
     
+    // lcd
+    lcd_init();
+    lcd_write_string(1,1,"Board test");
+    
 #ifdef XII_COUNT
     counter = eeprom_read_byte(EEPROM_ADDR_COUNTER);
     TRISC = 0xff;
@@ -58,8 +66,13 @@ int main(void)
         xiiseg_multiplex();
         
         
+        lcd_counter++;
+        if (lcd_counter >= 100){    // counter added to delay refreshes
+            lcd_write_temp(2,1,celsius);
+            lcd_counter = 0;
+        }
         
-        
+
         
     #ifdef XII_COUNT
         if (btn_inc()) {
