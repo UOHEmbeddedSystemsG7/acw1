@@ -26,7 +26,10 @@ void write_data_char(char char_data);
 void write_cmd(char cmd);
 void write_nibble(char nibble);
 void set_cursor(char row, char col);
-void write_data_string(char *text);
+void lcd_write_string(char row, char col, char *text);
+void lcd_write_temp(char row, char col, int celsius);
+
+
     
     
 #ifdef	__cplusplus

@@ -78,8 +78,58 @@ void set_cursor(char row, char col){
     write_cmd(address);
 }
 
-void write_data_string(char *text){
-    while (*text){  // converts users input string in to individual characters
+void lcd_write_string(char row, char col, char *text){
+    char address;
+    if(row == 1){
+        address = 0x80 + (col -1);  // Row 1 address
+    }else{
+        address = 0xC0 + (col -1);  // Row 2 address
+    }
+    write_cmd(address);
+    while (*text){
         write_data_char(*text++);
     }
 }
+
+void lcd_write_temp(char row, char col, int celsius){
+    
+    // ADD TRY FOR IF WRONG COL CHOSEN
+    set_cursor(row,col);// first character
+    write_data_char(((celsius / 100) % 10) + 48);
+
+    set_cursor(row,(col + 1));// second character
+    write_data_char(((celsius / 10) % 10) + 48);
+    
+    set_cursor(row,(col + 2));// third character
+    write_data_char(46);
+
+    set_cursor(row,(col + 3));// third character
+    write_data_char((celsius % 10u) + 48);
+    
+    set_cursor(row, (col +4));
+    write_data_char(223);
+    
+    set_cursor(row, (col +5));
+    write_data_char(67);
+    
+}
+
+/*
+void menu(int screen){
+    switch (screen){
+        case 1:
+            main_menu();
+            break;
+        case 2:
+            alarm_menu();
+            break;
+        case 3:
+            heating_menu();
+            break;
+        case 4:
+            timer_edit();
+            
+    }
+}
+*/
+
