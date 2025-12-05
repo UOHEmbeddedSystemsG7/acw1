@@ -38,6 +38,9 @@ extern "C" {
 void chirp(uint16_t freq, uint8_t duty);
 void sing(uint16_t freq, uint16_t duration, uint8_t duty);
 
+void set_buzzer_duration(const uint16_t freq, const uint8_t duty);
+void tune_1();
+void PWM();
 
 
 
