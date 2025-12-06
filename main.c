@@ -18,6 +18,7 @@
 
 
 uint16_t celsius = 0;
+uint16_t prev_celsius = 0;
 
 rtc_time_t time_now;
 rtc_time_t time_before;
@@ -69,11 +70,14 @@ int main(void)
         // LCDTIME/DATE
         // run this every ~100 loops
         if (main_loop_count - lcd_last_run_count >= 100){
+            
             lcd_write_date(1,9, &date_now, &date_before);
             lcd_write_time(2,9, &time_now, &time_before);
             
             date_before = date_now;
             time_before = time_now;
+            
+            
             
         }
        
@@ -88,5 +92,6 @@ int main(void)
         
         
         main_loop_count+= 1;
+        prev_celsius = celsius;
     }
 }
