@@ -19,6 +19,7 @@
 
 
 uint16_t celsius = 0;
+uint16_t prev_celsius = 0;
 
 rtc_time_t time_now;
 rtc_time_t time_before;
@@ -141,12 +142,17 @@ int main(void)
                memset(&date_before, 0, sizeof(date_before)); 
                memset(&time_before, 0, sizeof(time_before));
             }
+
             
+            lcd_write_date(1,9, &date_now, &date_before);
+            lcd_write_time(2,9, &time_now, &time_before);
+
+   
             switch (ui_selected_screen) {
                 case 0: // render the default time and date.
                     lcd_write_date(1,9, &date_now, &date_before);
                     lcd_write_time(2,9, &time_now, &time_before);
-            
+      
                     date_before = date_now;
                     time_before = time_now;
                     break;
@@ -212,5 +218,6 @@ int main(void)
         }
         
         main_loop_count+= 1;
+        prev_celsius = celsius;
     }
 }
