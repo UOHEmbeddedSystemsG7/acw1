@@ -117,7 +117,7 @@ void lcd_write_temp(char row, char col, int celsius){
 
 void lcd_write_time(char row, char col, rtc_time_t *time_now, rtc_time_t *time_previous) {
     
-    
+    // only if hour has changed
     if (time_now->hour != time_previous->hour) {
         set_cursor(row,col);
         write_data_char(((time_now->hour / 10) % 10) + 48);
@@ -125,10 +125,12 @@ void lcd_write_time(char row, char col, rtc_time_t *time_now, rtc_time_t *time_p
         set_cursor(row,col+1);
         write_data_char(((time_now->hour / 1) % 10) + 48);
 
+        // prints a ":" between chars, move to ui?
         set_cursor(row,col+2);
         write_data_char(58); // :
     }
     
+    // only if min has changed
     if (time_now->minute != time_previous->minute) {
         set_cursor(row,col+3);
         write_data_char(((time_now->minute / 10) % 10) + 48);
@@ -136,70 +138,54 @@ void lcd_write_time(char row, char col, rtc_time_t *time_now, rtc_time_t *time_p
         set_cursor(row,col+4);
         write_data_char(((time_now->minute / 1) % 10) + 48);
 
+        // prints a ":" between chars, move to ui?
         set_cursor(row,col+5);
         write_data_char(58); 
     }
     
+    // only if sec has changed
     if (time_now->second != time_previous->second) {
         set_cursor(row,col+6);
         write_data_char(((time_now->second / 10) % 10) + 48);
 
+        // prints a ":" between chars, move to ui?
         set_cursor(row,col+7);
         write_data_char(((time_now->second / 1) % 10) + 48);
     }
 }
 
 void lcd_write_date(char row, char col, rtc_date_t *date_now, rtc_date_t *date_previous) {
+    // exit this early 99.99% of the time, only changes daily.
     if (date_now->day != date_previous->day || 
         date_now->month != date_previous->month || 
         date_now->year != date_previous->year) {
     
-   
+        // day 
         set_cursor(row,col);
         write_data_char(((date_now->day / 10) % 10) + 48);
-
         set_cursor(row,col+1);
         write_data_char(((date_now->day / 1) % 10) + 48);
-
+        
+        // prints a "/" between chars
         set_cursor(row,col+2);
-        write_data_char(47); // /
+        write_data_char(47);
     
     
-
+        //day
         set_cursor(row,col+3);
         write_data_char(((date_now->month / 10) % 10) + 48);
-
         set_cursor(row,col+4);
         write_data_char(((date_now->month / 1) % 10) + 48);
 
+        // prints a "/" between chars
         set_cursor(row,col+5);
-        write_data_char(47); // /
+        write_data_char(47);
     
-
+        
+        //year
         set_cursor(row,col+6);
         write_data_char(((date_now->year / 10) % 10) + 48);
-
         set_cursor(row,col+7);
         write_data_char(((date_now->year / 1) % 10) + 48);
     }
 }
-
-/*
-void menu(int screen){
-    switch (screen){
-        case 1:
-            main_menu();
-            break;
-        case 2:
-            alarm_menu();
-            break;
-        case 3:
-            heating_menu();
-            break;
-        case 4:
-            timer_edit();
-            
-    }
-}
-*/
-

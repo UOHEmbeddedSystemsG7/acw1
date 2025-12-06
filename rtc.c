@@ -23,6 +23,9 @@
 // 0x64 for write (<<1) + 0
 // 0x65 for read (<<1) + 1
 
+// internal address is to be on the top nibble, 
+// bottom nibble is for transmision mode (always 0000)
+
 //binary coded decimal conv methods
 static uint8_t dec_to_bcd(uint8_t dec) {
     return ((dec/10) << 4  | (dec%10));
