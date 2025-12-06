@@ -12,11 +12,13 @@
 #include "eeprom.h"
 #include "ui.h"
 #include "lcd.h"
+#include "heating.h"
 
 
 
 
 uint16_t celsius = 0;
+uint16_t prev_celsius = 0;
 
 rtc_time_t time_now;
 rtc_time_t time_before;
@@ -48,6 +50,7 @@ int main(void)
     rtc_init();
     xiiseg_init();
     lcd_init();
+    heating_init();
 
     while(1)
     {
@@ -61,16 +64,20 @@ int main(void)
         xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
         xiiseg_display(0, digits[(celsius / 100) % 10]);
         
+        heating_logic(celsius, heating_lower, heating_upper);
         
         
         // LCDTIME/DATE
         // run this every ~100 loops
         if (main_loop_count - lcd_last_run_count >= 100){
+            
             lcd_write_date(1,9, &date_now, &date_before);
             lcd_write_time(2,9, &time_now, &time_before);
             
             date_before = date_now;
             time_before = time_now;
+            
+            
             
         }
        
@@ -85,5 +92,6 @@ int main(void)
         
         
         main_loop_count+= 1;
+        prev_celsius = celsius;
     }
 }
