@@ -32,7 +32,7 @@ void write_cmd(char cmd);
 void write_nibble(char nibble);
 void set_cursor(char row, char col);
 void lcd_write_string(char row, char col, char *text);
-void lcd_write_temp(char row, char col, uint16_t celsius);
+void lcd_write_temp(char row, char col, uint16_t celsius, uint16_t prev_celsius);
 void lcd_write_time(char row, char col, rtc_time_t *time_now, rtc_time_t *time_previous);
 void lcd_write_date(char row, char col, rtc_date_t *date_now, rtc_date_t *date_previous);
 
