@@ -9,10 +9,10 @@ uint8_t _disp[4] = {0x00, 0x00, 0x00, 0x00};
 void xiiseg_init() {
     ANSELD = 0;
     ANSELA = 0;
-
+    
     TRISD = 0;
     TRISA = 0;
-
+    
     PORTA = 0;
     PORTD = 0;
 }
@@ -25,15 +25,15 @@ void xiiseg_display(uint8_t index, uint8_t value) {
 void xiiseg_multiplex() {
     PORTD = 0;
     for (int i = 0; i < 4; i++) {
-        // blank
-        PORTA = 0xf;
+        // blanks first 4 bits
+        PORTA &= ~(0x0f);
         PORTD = 0;
-
-        PORTA = (1 << 3-i);
+        
+        PORTA = PORTA | (1 << 3-i);
         PORTD = _disp[i];
 
         __delay_us(700);
-
+        
     }
 }
 
