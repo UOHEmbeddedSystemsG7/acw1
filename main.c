@@ -27,6 +27,7 @@ rtc_date_t date_before;
 uint32_t main_loop_count = 0;
 uint32_t lcd_last_run_count = 0;
 uint32_t rtc_last_fetch_count = 0;
+uint32_t eeprom_last_save_count = 0;
 
 // lcd
 uint8_t ui_selected_screen = 0;
@@ -48,6 +49,23 @@ int main(void)
     // button init?
     TRISC |= 0xC3;
     ANSELC &= ~(0xC3);
+    
+    ui_alarm_sel = eeprom_read_byte(EEPROM_ADDR_ALARM_SEL);
+    
+    ui_alarm_sel = eeprom_read_byte(EEPROM_ADDR_ALARM_SEL);
+            
+    ui_temp_upper = eeprom_read_byte(EEPROM_ADDR_TEMP_UPPER)*10;
+    ui_temp_lower = eeprom_read_byte(EEPROM_ADDR_TEMP_LOWER)*10;
+            
+    ui_temp_start.hour = eeprom_read_byte(EEPROM_ADDR_TEMP_START_H);
+    ui_temp_start.minute = eeprom_read_byte(EEPROM_ADDR_TEMP_START_M);
+            
+    ui_temp_end.hour = eeprom_read_byte(EEPROM_ADDR_TEMP_END_H);
+    ui_temp_end.minute = eeprom_read_byte(EEPROM_ADDR_TEMP_END_M);
+            
+    ui_alarm_time.hour = eeprom_read_byte(EEPROM_ADDR_ALARM_H);
+    ui_alarm_time.minute = eeprom_read_byte(EEPROM_ADDR_ALARM_M);
+    
     
     while(1)
     {
@@ -142,9 +160,7 @@ int main(void)
                     break;
            }
             screen_swapped = 0;
-            
         }
-        
         
         // RTC Refresh
         // run every ~500
@@ -155,16 +171,36 @@ int main(void)
 
         
         
+        // ----------------------- MAIN LOOP LOGIC! ----------------------- 
+        // ----------------------- MAIN LOOP LOGIC! ----------------------- 
+        // ----------------------- MAIN LOOP LOGIC! ----------------------- 
         
         
         
         
         
+       
         
         
+        // SAVE to EEPROM every ~10 seconds
+        if (main_loop_count - eeprom_last_save_count >= 300) { // we may only want to save if chaganged
+            
+            eeprom_write_byte(EEPROM_ADDR_ALARM_SEL, ui_alarm_sel);
+            
+            eeprom_write_byte(EEPROM_ADDR_TEMP_UPPER, ui_temp_upper/10);
+            eeprom_write_byte(EEPROM_ADDR_TEMP_LOWER, ui_temp_lower/10);
+            
+            eeprom_write_byte(EEPROM_ADDR_TEMP_START_H, ui_temp_start.hour);
+            eeprom_write_byte(EEPROM_ADDR_TEMP_START_M, ui_temp_start.minute);
+            
+            eeprom_write_byte(EEPROM_ADDR_TEMP_END_H, ui_temp_end.hour);
+            eeprom_write_byte(EEPROM_ADDR_TEMP_END_M, ui_temp_end.minute);
+            
+            eeprom_write_byte(EEPROM_ADDR_ALARM_H, ui_alarm_time.hour);
+            eeprom_write_byte(EEPROM_ADDR_ALARM_M, ui_alarm_time.minute);
+            
+        }
         
-        
-        // MAIN LOOP LOGIC!
         main_loop_count+= 1;
     }
 }
