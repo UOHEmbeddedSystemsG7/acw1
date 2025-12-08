@@ -199,6 +199,25 @@
         <property key="program-the-device-with-default-config-words" value="false"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
+      <Tool>
+        <property key="AutoSelectMemRanges" value="manual"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="debugoptions.useswbreakpoints" value="true"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
+        <property key="general.addressForScan" value="192.168.1.1:49001"/>
+        <property key="general.linkPassword" value="codegrip-link-password"/>
+        <property key="lastid" value=""/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.end" value="0x7fff"/>
+        <property key="memories.programmemory.start" value="0x0"/>
+        <property key="programming.verifyAfterWrite" value="disabled"/>
+        <property key="targetConn.programmingType" value="vddFirst"/>
+        <property key="targetConn.protocol" value="icsp"/>
+        <property key="targetConn.speed" value="4MHz"/>
+      </Tool>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
         <property key="stack-guidance" value="false"/>
@@ -222,7 +241,22 @@
         <property key="wpo-lto" value="false"/>
       </XC8-config-global>
       <codegripdebugmodule>
-        <property key="debugoptions.useswbreakpoints" value="true"/>
+        <property key="AutoSelectMemRanges" value="manual"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
+        <property key="general.addressForScan" value="192.168.1.1:49001"/>
+        <property key="general.linkPassword" value="codegrip-link-password"/>
+        <property key="lastid" value=""/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.end" value="0x7fff"/>
+        <property key="memories.programmemory.start" value="0x0"/>
+        <property key="programming.verifyAfterWrite" value="disabled"/>
+        <property key="targetConn.programmingType" value="vddFirst"/>
+        <property key="targetConn.protocol" value="icsp"/>
+        <property key="targetConn.speed" value="4MHz"/>
       </codegripdebugmodule>
     </conf>
   </confs>

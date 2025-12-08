@@ -34,12 +34,37 @@ extern "C" {
 
 #define WAIT_AFTER_SING 5
 
+typedef struct {
+    uint16_t freq;
+    uint16_t duration;
+    uint8_t volume;
+} note;
 
-void chirp(uint16_t freq, uint8_t duty);
-void sing(uint16_t freq, uint16_t duration, uint8_t duty);
+const note melody_1[] =  {
+    {262, 1, 125},
+    {262, 1, 125},
+    {587, 2, 125},
+    {440, 4, 125}, 
 
-void set_buzzer_duration(const uint16_t freq, const uint8_t duty);
-void tune_1();
+};
+
+const note melody_2[]= {
+    {262, 2, 125},
+    {262, 1, 125},
+    {262, 2, 125},
+    {262, 1, 125},
+    {587, 1, 125},
+    {440, 1, 125}, 
+
+};
+
+
+
+void play_midi(const note melody[], uint32_t position);
+void set_duty(uint8_t duty);
+void set_freq(uint16_t freq);
+void pwm_reset();
+
 void PWM();
 
 

@@ -53,14 +53,51 @@ int main(void)
     ANSELC = 0;
 #endif
     
-//    uint64_t counter = 10000000000000000;
+    uint32_t counter = 0;
+    uint16_t note_pos = 0;
+    
     while(1)
     {
 
 
         // we want this on ISR prob
         xiiseg_multiplex();
+
+//        set_freq(440);
+//        set_duty(1);
+//        play_midi(melody_1, counter);
+
         
+//        const uint16_t len = sizeof(*melody_1)/sizeof(melody_1[0]);
+        set_freq(246);
+        set_duty(10);
+        __delay_ms(1000);
+        set_freq(440);
+        __delay_ms(100);
+//        __delay_ms(5000);
+//        pwm_reset();
+//        __delay_ms(100);
+//        set_freq(125);
+//        set_freq(300);
+//        
+//        for (uint16_t i = 0; i < 4; i++) {
+//            note n = melody_1[i];
+//            
+//            set_freq(n.freq);
+//            set_duty(125);
+//            __delay_ms(1000);
+////            if (counter >= note_pos) {
+////                set_freq(n.freq);
+////                set_duty(n.volume);
+////                break;
+////            } else {
+////                note_pos += n.duration;
+////            }
+//        }
+
+//        counter ++;
+//        set_duty(1);
+        __delay_ms(100);
         
         
         
