@@ -1,6 +1,7 @@
 #include <builtins.h>
 #include "lcd.h"
 #include "rtc.h"
+#include "ui.h"
 
 
 void lcd_init(){
@@ -92,7 +93,7 @@ void lcd_write_string(char row, char col, char *text){
     }
 }
 
-void lcd_write_temp(char row, char col, int celsius){
+void lcd_write_temp(char row, char col, uint16_t celsius){
     
     // ADD TRY FOR IF WRONG COL CHOSEN
     set_cursor(row,col);// first character
@@ -119,6 +120,10 @@ void lcd_write_time(char row, char col, rtc_time_t *time_now, rtc_time_t *time_p
     
     // only if hour has changed
     if (time_now->hour != time_previous->hour) {
+        
+        // HACK: clears screen each screen swap
+        lcd_write_string(row, 1, ui_empty_line); 
+        
         set_cursor(row,col);
         write_data_char(((time_now->hour / 10) % 10) + 48);
 
@@ -137,14 +142,15 @@ void lcd_write_time(char row, char col, rtc_time_t *time_now, rtc_time_t *time_p
 
         set_cursor(row,col+4);
         write_data_char(((time_now->minute / 1) % 10) + 48);
-
-        // prints a ":" between chars, move to ui?
-        set_cursor(row,col+5);
-        write_data_char(58); 
     }
     
     // only if sec has changed
     if (time_now->second != time_previous->second) {
+        
+        // prints a ":" between chars, move to ui?
+        set_cursor(row,col+5);
+        write_data_char(58); 
+        
         set_cursor(row,col+6);
         write_data_char(((time_now->second / 10) % 10) + 48);
 
@@ -159,6 +165,8 @@ void lcd_write_date(char row, char col, rtc_date_t *date_now, rtc_date_t *date_p
     if (date_now->day != date_previous->day || 
         date_now->month != date_previous->month || 
         date_now->year != date_previous->year) {
+        
+        lcd_write_string(row, 1, ui_empty_line);
     
         // day 
         set_cursor(row,col);
