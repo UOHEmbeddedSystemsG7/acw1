@@ -56,37 +56,7 @@ int main(void)
 //    uint64_t counter = 10000000000000000;
     while(1)
     {
-//        counter--;
-//        uint16_t freq = (counter % 440) + 880;
-//        set_buzzer_duration(freq, 125, 0);
-    set_buzzer_duration(262, 125);
-    __delay_ms(550);
-    set_buzzer_duration(0, 0);
-    __delay_ms(50);
-    set_buzzer_duration(262, 125);
-    __delay_ms(550);
-     set_buzzer_duration(0, 0);
-    __delay_ms(50);
-    set_buzzer_duration(587, 125);
-    __delay_ms(1750);
-    set_buzzer_duration(0, 0);
-    __delay_ms(50);
-    set_buzzer_duration(440, 125);
-    __delay_ms(1450);
-    set_buzzer_duration(0, 0);
-    __delay_ms(50);
-//    set_buzzer_duration(415, 125, 300);
-//    __delay_ms(1200);
-//    set_buzzer_duration(392, 125, 250);
-//    __delay_ms(1000);
-//    set_buzzer_duration(345, 125, 300);
-//    __delay_ms(1200);
-//    set_buzzer_duration(294, 125, 150);
-//    __delay_ms(600);
-//    set_buzzer_duration(349, 125, 150);
-//    __delay_ms(600);
-//    set_buzzer_duration(392, 125, 150);
-//    __delay_ms(600);
+
 
         // we want this on ISR prob
         xiiseg_multiplex();
