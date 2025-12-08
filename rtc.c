@@ -3,9 +3,15 @@
 #include "rtc.h"
 
 #define RTC_SLAVE_ADDR 0x32
+
 #define REG_SECONDS 0x0
 #define REG_MINUTES 0x1
 #define REG_HOURS 0x2
+
+#define REG_DAY 0x4
+#define REG_MONTH 0x5
+#define REG_YEAR 0x6
+
 #define REG_CTRL1 0xE
 #define REG_CTRL2 0xF
 
@@ -16,6 +22,9 @@
 // slave address is 0x32, but to read/write:
 // 0x64 for write (<<1) + 0
 // 0x65 for read (<<1) + 1
+
+// internal address is to be on the top nibble, 
+// bottom nibble is for transmision mode (always 0000)
 
 //binary coded decimal conv methods
 static uint8_t dec_to_bcd(uint8_t dec) {
@@ -77,5 +86,25 @@ void rtc_get_time(rtc_time_t* time) {
     time->hour=bcd_to_dec(time_buf[2]);
 }
 
-// TODO: GET/SET DATE
+void rtc_set_date(rtc_date_t* date) {
+    uint8_t date_buf[3];
+    date_buf[0]=dec_to_bcd(date->day);
+    date_buf[1]=dec_to_bcd(date->month);
+    date_buf[2]=dec_to_bcd(date->year);
+    
+    iic_start();
+    iic_write((RTC_SLAVE_ADDR<<1)|0); // or wont do anything
+    iic_write(REG_DAY<<4);
+    iic_write(date_buf[0]);
+    iic_write(date_buf[1]);
+    iic_write(date_buf[2]);
+    iic_stop();
+}
 
+void rtc_get_date(rtc_date_t* date) {
+    uint8_t date_buf[3];
+    rtc_read_reg(REG_DAY, date_buf,3);
+    date->day=bcd_to_dec(date_buf[0]);
+    date->month=bcd_to_dec(date_buf[1]);
+    date->year=bcd_to_dec(date_buf[2]);
+}
