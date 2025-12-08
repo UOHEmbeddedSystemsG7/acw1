@@ -9,12 +9,8 @@
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-<<<<<<< HEAD
-                <sourceRootElem>.</sourceRootElem>
-=======
                 <sourceRootElem>src</sourceRootElem>
                 <sourceRootElem>mcc_generated_files/system</sourceRootElem>
->>>>>>> c92b3826f6cddf8e53c7526e1c3b2c4371f3e967
             </sourceRootList>
             <confList>
                 <confElem>

@@ -50,25 +50,11 @@
       <itemPath>README.md</itemPath>
       <itemPath>ui.c</itemPath>
       <itemPath>ui.h</itemPath>
-<<<<<<< HEAD
-      <itemPath>.gitignore</itemPath>
-      <itemPath>buzzer.c</itemPath>
-      <itemPath>buzzer.h</itemPath>
-      <itemPath>eeprom.c</itemPath>
-      <itemPath>eeprom.h</itemPath>
-      <itemPath>rtc.c</itemPath>
-      <itemPath>rtc.h</itemPath>
-    </logicalFolder>
-  </logicalFolder>
-  <sourceRootList>
-    <Elem>.</Elem>
-=======
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
     <Elem>mcc_generated_files/system</Elem>
->>>>>>> c92b3826f6cddf8e53c7526e1c3b2c4371f3e967
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

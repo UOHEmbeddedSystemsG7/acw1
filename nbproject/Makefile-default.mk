@@ -51,19 +51,7 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-<<<<<<< HEAD
-SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/system/src/interrupt.c mcc_generated_files/system/src/system.c mcc_generated_files/system/src/config_bits.c mcc_generated_files/system/src/clock.c mcc_generated_files/system/src/pins.c main.c sevenseg.c adc.c debounce.c iic.c ui.c buzzer.c eeprom.c rtc.c
 
-# Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/system/src/interrupt.p1 ${OBJECTDIR}/mcc_generated_files/system/src/system.p1 ${OBJECTDIR}/mcc_generated_files/system/src/config_bits.p1 ${OBJECTDIR}/mcc_generated_files/system/src/clock.p1 ${OBJECTDIR}/mcc_generated_files/system/src/pins.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/sevenseg.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/debounce.p1 ${OBJECTDIR}/iic.p1 ${OBJECTDIR}/ui.p1 ${OBJECTDIR}/buzzer.p1 ${OBJECTDIR}/eeprom.p1 ${OBJECTDIR}/rtc.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/system/src/interrupt.p1.d ${OBJECTDIR}/mcc_generated_files/system/src/system.p1.d ${OBJECTDIR}/mcc_generated_files/system/src/config_bits.p1.d ${OBJECTDIR}/mcc_generated_files/system/src/clock.p1.d ${OBJECTDIR}/mcc_generated_files/system/src/pins.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/sevenseg.p1.d ${OBJECTDIR}/adc.p1.d ${OBJECTDIR}/debounce.p1.d ${OBJECTDIR}/iic.p1.d ${OBJECTDIR}/ui.p1.d ${OBJECTDIR}/buzzer.p1.d ${OBJECTDIR}/eeprom.p1.d ${OBJECTDIR}/rtc.p1.d
-
-# Object Files
-OBJECTFILES=${OBJECTDIR}/mcc_generated_files/system/src/interrupt.p1 ${OBJECTDIR}/mcc_generated_files/system/src/system.p1 ${OBJECTDIR}/mcc_generated_files/system/src/config_bits.p1 ${OBJECTDIR}/mcc_generated_files/system/src/clock.p1 ${OBJECTDIR}/mcc_generated_files/system/src/pins.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/sevenseg.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/debounce.p1 ${OBJECTDIR}/iic.p1 ${OBJECTDIR}/ui.p1 ${OBJECTDIR}/buzzer.p1 ${OBJECTDIR}/eeprom.p1 ${OBJECTDIR}/rtc.p1
-
-# Source Files
-SOURCEFILES=mcc_generated_files/system/src/interrupt.c mcc_generated_files/system/src/system.c mcc_generated_files/system/src/config_bits.c mcc_generated_files/system/src/clock.c mcc_generated_files/system/src/pins.c main.c sevenseg.c adc.c debounce.c iic.c ui.c buzzer.c eeprom.c rtc.c
-=======
 SOURCEFILES_QUOTED_IF_SPACED=main.c sevenseg.c adc.c debounce.c iic.c ui.c mcc_generated_files/system/src/interrupt.c mcc_generated_files/system/src/system.c mcc_generated_files/system/src/config_bits.c mcc_generated_files/system/src/clock.c mcc_generated_files/system/src/pins.c
 
 # Object Files Quoted if spaced
@@ -75,7 +63,7 @@ OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/sevenseg.p1 ${OBJECTDIR}/adc.p1 ${
 
 # Source Files
 SOURCEFILES=main.c sevenseg.c adc.c debounce.c iic.c ui.c mcc_generated_files/system/src/interrupt.c mcc_generated_files/system/src/system.c mcc_generated_files/system/src/config_bits.c mcc_generated_files/system/src/clock.c mcc_generated_files/system/src/pins.c
->>>>>>> c92b3826f6cddf8e53c7526e1c3b2c4371f3e967
+
 
 
 
