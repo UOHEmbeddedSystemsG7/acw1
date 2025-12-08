@@ -25,6 +25,9 @@ uint8_t btn_sel();
 uint8_t btn_inc();
 uint8_t btn_dec();
 
+void ui_increment(uint8_t current_screen);
+void ui_decrement(uint8_t current_screen);
+
 uint16_t ui_temp_upper;
 uint16_t ui_temp_lower;
 uint8_t ui_alarm_sel;
