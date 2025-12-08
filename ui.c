@@ -25,6 +25,98 @@ uint8_t btn_cyc() {
   uint8_t raw = PORTCbits.RC0 ? 1u : 0u;
   return debounce(raw, &state_cyc);
 }
+
+static void time_increment(rtc_time_t *time) {
+    // increments at 1 min per time
+    if (time->minute >= 59) { // 59->0
+        time->minute = 0;
+        
+        if (time->hour >= 23) { // loop around
+            time->hour = 0;
+        }
+        else {
+            time->hour++;
+        }
+    }
+    else {
+        time->minute++;
+    }
+}
+
+static void time_decrement(rtc_time_t *time) {
+    if (time->minute == 0) { // 0->59
+        time->minute = 59;
+        
+        if (time->hour == 0) { // loop around
+            time->hour = 23;
+        }
+        else {
+            time->hour--;
+        }
+    }
+    else {
+        time->minute--;
+    }
+}
+
+// These are screen spsific.
+void ui_increment(uint8_t current_screen) {
+    switch (current_screen) {
+        case 0: // default
+            break;
+        case 1: // T upper
+            if (ui_temp_upper > 390) {ui_temp_upper = 0;}
+            ui_temp_upper += 10;
+            break;
+        case 2: // T lower
+            if (ui_temp_lower > 390) {ui_temp_lower = 0;}
+            ui_temp_lower += 10;
+            break;
+        case 3:
+            time_increment(&ui_temp_start);
+            break;
+        case 4:
+            time_increment(&ui_temp_end);
+            break;
+        case 5:
+            time_increment(&ui_alarm_time);
+            break;
+        case 6:
+            ui_alarm_sel = 2;
+            break;   
+        
+    }
+    
+}
+
+void ui_decrement(uint8_t current_screen) {
+    switch (current_screen) {
+        case 0:
+            break;
+        case 1:
+            if (ui_temp_upper == 0 ) {ui_temp_upper = 410;}
+            ui_temp_upper -= 10;
+            break;
+        case 2:
+            if (ui_temp_lower == 0 ) {ui_temp_lower = 410;}
+            ui_temp_lower -= 10;
+            break;
+        case 3:
+            time_decrement(&ui_temp_start);
+            break;
+        case 4:
+            time_decrement(&ui_temp_end);
+            break;
+        case 5:
+            time_decrement(&ui_alarm_time);
+            break;
+        case 6:
+            ui_alarm_sel = 1;
+            break;    
+    }
+    
+}
+
 void ui_render_temp_upper(uint8_t just_entered) {
     char line1[16] = "Temp Upper:     ";
     static uint16_t prev_temp = 0;
