@@ -124,11 +124,6 @@ int main(void)
         xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
         xiiseg_display(0, digits[(celsius / 100) % 10]);
 
-
-        // LCD
-        
-        heating_logic(celsius, heating_lower, heating_upper);
-        
         // LCDTIME/DATE
 
         // run this every ~100 loops
@@ -143,11 +138,6 @@ int main(void)
                memset(&time_before, 0, sizeof(time_before));
             }
 
-            
-            lcd_write_date(1,9, &date_now, &date_before);
-            lcd_write_time(2,9, &time_now, &time_before);
-
-   
             switch (ui_selected_screen) {
                 case 0: // render the default time and date.
                     lcd_write_date(1,9, &date_now, &date_before);
@@ -183,6 +173,7 @@ int main(void)
         if (main_loop_count - rtc_last_fetch_count >= 100) {
             rtc_get_time(&time_now);
             rtc_get_date(&date_now); // can be removed if wanted quicker
+            heating_logic(celsius, time_now);
         }
 
         
