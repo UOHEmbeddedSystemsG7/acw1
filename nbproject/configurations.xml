@@ -50,11 +50,18 @@
       <itemPath>README.md</itemPath>
       <itemPath>ui.c</itemPath>
       <itemPath>ui.h</itemPath>
+      <itemPath>eeprom.c</itemPath>
+      <itemPath>eeprom.h</itemPath>
+      <itemPath>lcd.c</itemPath>
+      <itemPath>lcd.h</itemPath>
+      <itemPath>rtc.c</itemPath>
+      <itemPath>rtc.h</itemPath>
+      <itemPath>buzzer.c</itemPath>
+      <itemPath>buzzer.h</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>src</Elem>
-    <Elem>mcc_generated_files/system</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -64,10 +71,10 @@
         <targetDevice>PIC18F45K22</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool></platformTool>
+        <platformTool>codegripdebugmodule</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>3.10</languageToolchainVersion>
-        <platform>4</platform>
+        <languageToolchainVersion>3.00</languageToolchainVersion>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC18F-K_DFP" vendor="Microchip" version="1.14.301"/>

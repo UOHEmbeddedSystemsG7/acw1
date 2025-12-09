@@ -13,6 +13,7 @@
 #include "eeprom.h"
 #include "ui.h"
 #include "lcd.h"
+#include "buzzer.h"
 
 
 
@@ -45,6 +46,7 @@ int main(void)
     rtc_init();
     xiiseg_init();
     lcd_init();
+    PWM();
     
     // button init?
     TRISC |= 0xC3;
@@ -67,8 +69,21 @@ int main(void)
     ui_alarm_time.minute = eeprom_read_byte(EEPROM_ADDR_ALARM_M);
     
     
+    
+    set_freq(400);
+    set_duty(90);
+//    __delay_ms(1000);
+//    set_freq(400);
+//    __delay_ms(500);
+//    
+    
+    uint8_t counter = 0;
+    
     while(1)
     {
+        counter += 1;
+        
+//        set_freq(counter);
         
         // ------------------- USER INPUTS ------------------- 
         // ------------------- USER INPUTS ------------------- 
@@ -102,6 +117,8 @@ int main(void)
             ui_decrement(ui_selected_screen);
             __delay_ms(10);
         }
+        
+        
         
         
         // -------------------- DISPLAY AND RENDERING --------------------
