@@ -119,7 +119,8 @@ int main(void)
         }
         
         
-        
+        // alarm time is ui alarm time, once h and m match, trigger alarm
+        // ui alarm tone
         
         // -------------------- DISPLAY AND RENDERING --------------------
         // -------------------- DISPLAY AND RENDERING --------------------
