@@ -2,6 +2,7 @@
 #include "lcd.h"
 #include "rtc.h"
 #include "heating.h"
+#include "ui.h"
 
 rtc_time_t time_now;
 
@@ -22,38 +23,42 @@ void heating_init(){
     TRISA = 0;
     PORTA = 0;
     
-    // set pin RA5 as output
+    // set pins RA5:7 as output
     TRISAbits.TRISA5 = 0;
+    TRISAbits.TRISA6 = 0;
+    TRISAbits.TRISA7 = 0;
     
     heating_off();
 }
 
-void heating_logic(uint16_t celsius, uint16_t heating_lower, uint16_t heating_upper){
+void heating_logic(uint16_t celsius, rtc_time_t time_now){
+    
+    uint8_t end_hour = ui_temp_end.hour;
+    uint8_t end_min = ui_temp_end.minute;
+    
+    uint8_t start_hour = ui_temp_start.hour;
+    uint8_t start_min = ui_temp_start.minute;
+    
    
-    heating_lower = heating_lower * 10;
-    heating_upper = heating_upper * 10;
-    
-    uint8_t current_hour = time_now.hour;
-    uint8_t current_minute = time_now.minute;
-    
     // checks hour then minute for whether heating allowed to turn on
-    if ((current_hour >= lower_hour) && (current_hour <= upper_hour)){
+    if ((time_now.hour >= start_hour) && (time_now.hour <= end_hour)){
         
-        if ((current_hour == upper_hour) && (current_minute > upper_min)){
+        if ((time_now.hour == end_hour) && (time_now.minute > end_min)){
             heating_off();
-        } else if ((current_hour == lower_hour) && (current_minute < lower_min)){
+        } else if ((time_now.hour == start_hour) && (time_now.minute < start_min)){
             heating_off();
         } else {
             // if temp goes lower than bottom threshold then heating turns on
-            if (celsius <= heating_lower){
+            if (celsius <= ui_temp_lower){
                 heating_on();
             }
           
             // if temp in room greater than heating_upper the LED will be off regardless of time
-            if(celsius >= heating_upper){
+            if(celsius >= ui_temp_upper){
                 heating_off();
             }
         }
     } else {heating_off();}   
+
 }
 
