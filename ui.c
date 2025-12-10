@@ -7,22 +7,22 @@
 #include "eeprom.h"
 
 uint8_t btn_dec() {
-  uint8_t raw = PORTCbits.RC6 ? 1u : 0u;
+  uint8_t raw = PORTCbits.RC6 ? 0u : 1u;
   return debounce(raw, &state_dec);
 }
 
 uint8_t btn_sel() {
-  uint8_t raw = PORTCbits.RC1 ? 1u : 0u;
+  uint8_t raw = PORTCbits.RC1 ? 0u : 1u;
   return debounce(raw, &state_sel);
 }
 
 uint8_t btn_inc() {
-  uint8_t raw = PORTCbits.RC7 ? 1u : 0u;
+  uint8_t raw = PORTCbits.RC7 ? 0u : 1u;
   return debounce(raw, &state_inc);
 }
 
 uint8_t btn_cyc() {
-  uint8_t raw = PORTCbits.RC0 ? 1u : 0u;
+  uint8_t raw = PORTCbits.RC0 ? 0u : 1u;
   return debounce(raw, &state_cyc);
 }
 
@@ -59,7 +59,7 @@ static void time_decrement(rtc_time_t *time) {
     }
 }
 
-// These are screen spsific.
+// These are screen specific.
 void ui_increment(uint8_t current_screen) {
     switch (current_screen) {
         case 0: // default
