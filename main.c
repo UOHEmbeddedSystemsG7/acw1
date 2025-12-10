@@ -17,7 +17,7 @@
 
 
 
-
+uint16_t filtered_celsius = 0;
 uint16_t celsius = 0;
 uint16_t prev_celsius = 0;
 
