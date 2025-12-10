@@ -87,15 +87,15 @@ int main(void)
         // ------------------- USER INPUTS ------------------- 
         
         // one goes up a menu, other goes back
-        if (PORTCbits.RC1 == 0) {
+        if (btn_cyc()) {
             ui_selected_screen++;
             if (ui_selected_screen > TOP_SCREEN) {
                 ui_selected_screen = 0;
             }
             screen_swapped = 1;
-            __delay_ms(10);
+            __delay_ms(50);
         }
-        if (PORTCbits.RC0 == 0) {
+        if (btn_sel()) {
             
             if (ui_selected_screen == 0) {
                 ui_selected_screen = TOP_SCREEN;
@@ -103,7 +103,7 @@ int main(void)
                 ui_selected_screen--;
             }
             screen_swapped = 1;
-            __delay_ms(10);
+            __delay_ms(50);
         }
         
         if (PORTCbits.RC7 == 0) {
@@ -146,8 +146,8 @@ int main(void)
                lcd_write_string(2,1, ui_empty_line);
                
                // set both to 0 so they refresh
-               memset(&date_before, 0, sizeof(date_before)); 
-               memset(&time_before, 0, sizeof(time_before));
+               memset(&date_before, 99, sizeof(date_before)); 
+               memset(&time_before, 99, sizeof(time_before));
             }
 
             switch (ui_selected_screen) {
