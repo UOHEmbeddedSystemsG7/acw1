@@ -166,6 +166,7 @@ int main(void)
                     break;
            }
             screen_swapped = 0;
+            lcd_last_run_count = main_loop_count;
         }
         
         // RTC Refresh
@@ -174,6 +175,7 @@ int main(void)
             rtc_get_time(&time_now);
             rtc_get_date(&date_now); // can be removed if wanted quicker
             heating_logic(celsius, time_now);
+            rtc_last_fetch_count = main_loop_count;
         }
 
         
@@ -192,20 +194,56 @@ int main(void)
         // SAVE to EEPROM every ~10 seconds
         if (main_loop_count - eeprom_last_save_count >= 300) { // we may only want to save if chaganged
             
-            eeprom_write_byte(EEPROM_ADDR_ALARM_SEL, ui_alarm_sel);
+            switch(eeprom_state){
+                case 0:
+                     eeprom_write_byte(EEPROM_ADDR_ALARM_SEL, ui_alarm_sel);
+                     break;
+                case 1:
+                    eeprom_write_byte(EEPROM_ADDR_TEMP_UPPER, ui_temp_upper/10);
+                    break;
+                case 2:
+                    eeprom_write_byte(EEPROM_ADDR_TEMP_LOWER, ui_temp_lower/10);
+                    break;
+                case 3:
+                    eeprom_write_byte(EEPROM_ADDR_TEMP_START_H, ui_temp_start.hour);
+                    break;
+                case 4:
+                    eeprom_write_byte(EEPROM_ADDR_TEMP_START_M, ui_temp_start.minute);
+                    break;
+                case 5:
+                    eeprom_write_byte(EEPROM_ADDR_TEMP_END_H, ui_temp_end.hour);
+                    break;
+                case 6:
+                    eeprom_write_byte(EEPROM_ADDR_TEMP_END_M, ui_temp_end.minute);
+                    break;
+                case 7:
+                    eeprom_write_byte(EEPROM_ADDR_ALARM_H, ui_alarm_time.hour);
+                    break;
+                case 8:
+                    eeprom_write_byte(EEPROM_ADDR_ALARM_M, ui_alarm_time.minute);
+                    break;
+            }
             
-            eeprom_write_byte(EEPROM_ADDR_TEMP_UPPER, ui_temp_upper/10);
-            eeprom_write_byte(EEPROM_ADDR_TEMP_LOWER, ui_temp_lower/10);
+            eeprom_state++;
+            if (eeprom_state > 8){
+                eeprom_state = 0;
+            }
             
-            eeprom_write_byte(EEPROM_ADDR_TEMP_START_H, ui_temp_start.hour);
-            eeprom_write_byte(EEPROM_ADDR_TEMP_START_M, ui_temp_start.minute);
+            eeprom_last_save_count = main_loop_count;
             
-            eeprom_write_byte(EEPROM_ADDR_TEMP_END_H, ui_temp_end.hour);
-            eeprom_write_byte(EEPROM_ADDR_TEMP_END_M, ui_temp_end.minute);
-            
-            eeprom_write_byte(EEPROM_ADDR_ALARM_H, ui_alarm_time.hour);
-            eeprom_write_byte(EEPROM_ADDR_ALARM_M, ui_alarm_time.minute);
-            
+//            eeprom_write_byte(EEPROM_ADDR_ALARM_SEL, ui_alarm_sel);
+//            
+//            eeprom_write_byte(EEPROM_ADDR_TEMP_UPPER, ui_temp_upper/10);
+//            eeprom_write_byte(EEPROM_ADDR_TEMP_LOWER, ui_temp_lower/10);
+//            
+//            eeprom_write_byte(EEPROM_ADDR_TEMP_START_H, ui_temp_start.hour);
+//            eeprom_write_byte(EEPROM_ADDR_TEMP_START_M, ui_temp_start.minute);
+//            
+//            eeprom_write_byte(EEPROM_ADDR_TEMP_END_H, ui_temp_end.hour);
+//            eeprom_write_byte(EEPROM_ADDR_TEMP_END_M, ui_temp_end.minute);
+//            
+//            eeprom_write_byte(EEPROM_ADDR_ALARM_H, ui_alarm_time.hour);
+//            eeprom_write_byte(EEPROM_ADDR_ALARM_M, ui_alarm_time.minute);
         }
         
         main_loop_count+= 1;
