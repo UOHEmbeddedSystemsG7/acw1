@@ -34,6 +34,7 @@ uint32_t eeprom_last_save_count = 0;
 // lcd
 uint8_t ui_selected_screen = 0;
 #define TOP_SCREEN 6
+uint8_t eeprom_state = 0;
 uint8_t counter = 0;
 uint8_t screen_swapped = 1;
 
