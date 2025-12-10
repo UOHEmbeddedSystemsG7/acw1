@@ -24,6 +24,7 @@ const uint16_t EEPROM_ADDR_TEMP_UPPER = 0x0001;
 const uint16_t EEPROM_ADDR_TEMP_LOWER = 0x0002;
 */
     
+uint8_t isHeated;
 
 void heating_on(); // turns RA7 - RA4 top 4 bits
 void heating_off();
