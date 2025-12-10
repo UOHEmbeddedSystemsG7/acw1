@@ -7,7 +7,7 @@
 #include "eeprom.h"
 
 uint8_t btn_dec() {
-  uint8_t raw = PORTCbits.RC6 ? 1u : 0u;
+  uint8_t raw = PORTBbits.RB6 ? 1u : 0u;
   return debounce(raw, &state_dec);
 }
 
@@ -17,7 +17,7 @@ uint8_t btn_sel() {
 }
 
 uint8_t btn_inc() {
-  uint8_t raw = PORTCbits.RC7 ? 1u : 0u;
+  uint8_t raw = PORTBbits.RB7 ? 1u : 0u;
   return debounce(raw, &state_inc);
 }
 

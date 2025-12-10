@@ -55,6 +55,9 @@ int main(void)
     // button init?
     TRISC |= 0xC3;
     ANSELC &= ~(0xC3);
+    // fast buttons
+    TRISB |= 0xC0;
+    ANSELB &= ~(0xC0);
     
     ui_alarm_sel = eeprom_read_byte(EEPROM_ADDR_ALARM_SEL);
     
@@ -93,9 +96,9 @@ int main(void)
                 ui_selected_screen = 0;
             }
             screen_swapped = 1;
-            __delay_ms(50);
         }
-        if (btn_sel()) {
+        
+        if (btn_sel()) { 
             
             if (ui_selected_screen == 0) {
                 ui_selected_screen = TOP_SCREEN;
@@ -103,9 +106,20 @@ int main(void)
                 ui_selected_screen--;
             }
             screen_swapped = 1;
-            __delay_ms(50);
+        }
+       
+        // SLOW BUTTONS! Do not work!
+        if (btn_inc()) {
+            ui_increment(ui_selected_screen);
+            __delay_ms(10);
+        }
+        if (btn_dec()) {
+            ui_decrement(ui_selected_screen);
+            __delay_ms(10);
         }
         
+        
+        // FAST BUTTONS!
         if (PORTCbits.RC7 == 0) {
             ui_increment(ui_selected_screen);
             __delay_ms(10);
