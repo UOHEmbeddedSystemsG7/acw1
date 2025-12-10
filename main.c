@@ -121,9 +121,8 @@ int main(void)
         
         uint16_t temp_celsius = adc_to_celsius(read_adc());
 
-        // simple low-pass filter: filtered = 3/4 * old + 1/4 * new
         if (filtered_celsius == 0) {
-        // first time, just initialise
+        // on init
             filtered_celsius = temp_celsius;
         } 
         
