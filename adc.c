@@ -7,9 +7,15 @@ uint16_t VREF_mV = 3300u;   // 3300u for if J5 3.3mV and 5000u for if J5 5mV
 
 
 uint16_t read_adc() {
-    ADCON0 = ADCON0 | (1<<1); // set go bit
-    while ((ADCON0 >> 1) & 1<<1); // wait for go to clear
-    return (ADRESH << 8)  | (ADRESL);  
+//    ADCON0 = ADCON0 | (1<<1); // set go bit
+//    while ((ADCON0 >> 1) & 1<<1); // wait for go to clear
+//    return (ADRESH << 8)  | (ADRESL);  
+    
+    ADCON0 |= (1u << 1);
+    while (ADCON0 & (1u << 1)){
+        ;
+    }
+    return ((uint16_t)ADRESH << 8) | ADRESL;
 }
 
 uint16_t adc_to_celsius(uint16_t adc_raw) {
