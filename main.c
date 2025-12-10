@@ -17,7 +17,6 @@
 
 
 
-
 uint16_t celsius = 0;
 uint16_t prev_celsius = 0;
 
@@ -79,15 +78,14 @@ int main(void)
         // ------------------- USER INPUTS ------------------- 
         
         // one goes up a menu, other goes back
-        if (PORTCbits.RC1 == 0) {
+        if (btn_sel()) {
             ui_selected_screen++;
             if (ui_selected_screen > TOP_SCREEN) {
                 ui_selected_screen = 0;
             }
             screen_swapped = 1;
-            __delay_ms(10);
         }
-        if (PORTCbits.RC0 == 0) {
+        if (btn_cyc()) {
             
             if (ui_selected_screen == 0) {
                 ui_selected_screen = TOP_SCREEN;
@@ -95,16 +93,15 @@ int main(void)
                 ui_selected_screen--;
             }
             screen_swapped = 1;
-            __delay_ms(10);
         }
         
-        if (PORTCbits.RC7 == 0) {
+        if (btn_inc()) {
             ui_increment(ui_selected_screen);
-            __delay_ms(10);
+
         }
-        if (PORTCbits.RC6 == 0) {
+        if (btn_dec()) {
             ui_decrement(ui_selected_screen);
-            __delay_ms(10);
+
         }
         
         
@@ -189,7 +186,6 @@ int main(void)
        
         
         
-        // SAVE to EEPROM every ~10 seconds
         if (main_loop_count - eeprom_last_save_count >= 300) { // we may only want to save if chaganged
             
             eeprom_write_byte(EEPROM_ADDR_ALARM_SEL, ui_alarm_sel);
