@@ -13,6 +13,7 @@
 #include "eeprom.h"
 #include "ui.h"
 #include "lcd.h"
+#include "buzzer.h"
 #include "heating.h"
 
 
@@ -47,6 +48,7 @@ int main(void)
     rtc_init();
     xiiseg_init();
     lcd_init();
+    PWM();
     heating_init();
 
     
@@ -71,8 +73,14 @@ int main(void)
     ui_alarm_time.minute = eeprom_read_byte(EEPROM_ADDR_ALARM_M);
     
     
+    
+
+    uint8_t counter = 0;
+    uint32_t pos = 0;
+    
     while(1)
     {
+        counter += 1;
         
         // ------------------- USER INPUTS ------------------- 
         // ------------------- USER INPUTS ------------------- 
@@ -107,6 +115,9 @@ int main(void)
             __delay_ms(10);
         }
         
+        
+        // alarm time is ui alarm time, once h and m match, trigger alarm
+        // ui alarm tone
         
         // -------------------- DISPLAY AND RENDERING --------------------
         // -------------------- DISPLAY AND RENDERING --------------------
@@ -183,9 +194,34 @@ int main(void)
         // ----------------------- MAIN LOOP LOGIC! ----------------------- 
         
         
+        // alarm time is ui alarm time, once h and m match, trigger alarm
+        // ui alarm tone
         
+//        ui_alarm_sel;
+//        ui_alarm_time;
+//        time_now;
         
-        
+        if (time_now.hour == ui_alarm_time.hour && ui_alarm_sel != 0) {
+            if (time_now.minute == ui_alarm_time.minute) {
+                if ((counter % 50) == 0) {
+     
+                    set_duty(10);
+                    
+                    if (ui_alarm_sel == 1) {
+                        set_freq(melody_1[pos%4].freq);
+                    } else {
+                        set_freq(melody_2[pos%3].freq);
+                    }
+                    
+                    pos++; 
+     
+                }   
+            } else {
+                set_duty(0);
+            }
+        } else {
+            set_duty(0);
+        }
        
         
         
