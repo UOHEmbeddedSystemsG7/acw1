@@ -40,27 +40,42 @@ typedef struct {
     uint8_t volume;
 } note;
 
-const note melody_1[] =  {
-    {262, 1, 125},
-    {262, 1, 125},
-    {587, 2, 125},
-    {440, 4, 125}, 
+//const note melody_1[] =  {
+//    {262, 1, 125},
+//    {262, 1, 125},
+//    {587, 2, 125},
+//    {440, 4, 125}, 
+//
+//};
+//
+//const note melody_2[]= {
+//    {262, 2, 125},
+//    {262, 1, 125},
+//    {262, 2, 125},
+//    {262, 1, 125},
+//    {587, 1, 125},
+//    {440, 1, 125}, 
+//
+//};
 
+const note melody_1[] = {
+    {262, 1, 125},
+    {330, 1, 125},
+    {392, 2, 125},
+    {494, 1, 125}
 };
 
-const note melody_2[]= {
+const note melody_2[] = {
+    {390, 1, 125},
+    {330, 1, 125},
     {262, 2, 125},
-    {262, 1, 125},
-    {262, 2, 125},
-    {262, 1, 125},
-    {587, 1, 125},
-    {440, 1, 125}, 
-
 };
+
 
 
 
 void play_midi(const note melody[], uint32_t position);
+void play_note(const note melody[], uint32_t i);
 void set_duty(uint8_t duty);
 void set_freq(uint16_t freq);
 void pwm_reset();

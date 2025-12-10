@@ -14,11 +14,13 @@
 #include "ui.h"
 #include "lcd.h"
 #include "buzzer.h"
+#include "heating.h"
 
 
 
 
 uint16_t celsius = 0;
+uint16_t prev_celsius = 0;
 
 rtc_time_t time_now;
 rtc_time_t time_before;
@@ -47,6 +49,7 @@ int main(void)
     xiiseg_init();
     lcd_init();
     PWM();
+    heating_init();
     
     // button init?
     TRISC |= 0xC3;
@@ -70,20 +73,13 @@ int main(void)
     
     
     
-    set_freq(400);
-    set_duty(90);
-//    __delay_ms(1000);
-//    set_freq(400);
-//    __delay_ms(500);
-//    
-    
+
     uint8_t counter = 0;
+    uint32_t pos = 0;
     
     while(1)
     {
         counter += 1;
-        
-//        set_freq(counter);
         
         // ------------------- USER INPUTS ------------------- 
         // ------------------- USER INPUTS ------------------- 
@@ -130,6 +126,7 @@ int main(void)
         // we want this on ISR prob
         xiiseg_multiplex();
         
+        
         celsius = adc_to_celsius(read_adc());
         
         xiiseg_display(3, 0x39); // 0x39 is the hex for C
@@ -137,7 +134,8 @@ int main(void)
         xiiseg_display(1, (digits[(celsius / 10) % 10] + 0x80) ); // adding 0x80 turns on RD7 which is the dp
         xiiseg_display(0, digits[(celsius / 100) % 10]);
 
-        // LCD
+        // LCDTIME/DATE
+
         // run this every ~100 loops
         if (main_loop_count - lcd_last_run_count >= 100){
             if (screen_swapped) {
@@ -149,12 +147,12 @@ int main(void)
                memset(&date_before, 0, sizeof(date_before)); 
                memset(&time_before, 0, sizeof(time_before));
             }
-            
+
             switch (ui_selected_screen) {
                 case 0: // render the default time and date.
                     lcd_write_date(1,9, &date_now, &date_before);
                     lcd_write_time(2,9, &time_now, &time_before);
-            
+      
                     date_before = date_now;
                     time_before = time_now;
                     break;
@@ -185,6 +183,7 @@ int main(void)
         if (main_loop_count - rtc_last_fetch_count >= 100) {
             rtc_get_time(&time_now);
             rtc_get_date(&date_now); // can be removed if wanted quicker
+            heating_logic(celsius, time_now);
         }
 
         
@@ -194,9 +193,34 @@ int main(void)
         // ----------------------- MAIN LOOP LOGIC! ----------------------- 
         
         
+        // alarm time is ui alarm time, once h and m match, trigger alarm
+        // ui alarm tone
         
+//        ui_alarm_sel;
+//        ui_alarm_time;
+//        time_now;
         
-        
+        if (time_now.hour == ui_alarm_time.hour && ui_alarm_sel != 0) {
+            if (time_now.minute == ui_alarm_time.minute) {
+                if ((counter % 50) == 0) {
+     
+                    set_duty(10);
+                    
+                    if (ui_alarm_sel == 1) {
+                        set_freq(melody_1[pos%4].freq);
+                    } else {
+                        set_freq(melody_2[pos%3].freq);
+                    }
+                    
+                    pos++; 
+     
+                }   
+            } else {
+                set_duty(0);
+            }
+        } else {
+            set_duty(0);
+        }
        
         
         
@@ -220,5 +244,6 @@ int main(void)
         }
         
         main_loop_count+= 1;
+        prev_celsius = celsius;
     }
 }

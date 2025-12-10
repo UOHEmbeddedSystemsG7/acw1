@@ -4,7 +4,7 @@
   <defaultConf>0</defaultConf>
   <confs>
     <conf name="default" type="2">
-      <platformToolSN>:=ThirdParty-DLL-Mikroe:=&lt;vid>2DBC:=&lt;rev>0100:=&lt;man>Mikroe:=&lt;prod>CODEGRIP:=&lt;sn>ME2022204290003usb:=&lt;xpt>h:=&lt;drv>v:=en</platformToolSN>
+      <platformToolSN>:=ThirdParty-DLL-Mikroe:=&lt;vid>2DBC:=&lt;rev>0100:=&lt;man>Mikroe:=&lt;prod>CODEGRIP:=&lt;sn>ME2023008590009usb:=&lt;xpt>h:=&lt;drv>v:=en</platformToolSN>
       <languageToolchainDir>C:\Program Files\Microchip\xc8\v3.00\bin</languageToolchainDir>
       <mdbdebugger version="1">
         <placeholder1>place holder 1</placeholder1>

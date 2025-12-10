@@ -82,7 +82,9 @@ void ui_increment(uint8_t current_screen) {
             time_increment(&ui_alarm_time);
             break;
         case 6:
-            ui_alarm_sel = 2;
+            if (ui_alarm_sel != 2) {
+                ui_alarm_sel++;
+            }
             break;   
         
     }
@@ -111,7 +113,9 @@ void ui_decrement(uint8_t current_screen) {
             time_decrement(&ui_alarm_time);
             break;
         case 6:
-            ui_alarm_sel = 1;
+            if (ui_alarm_sel != 0) {
+                ui_alarm_sel--;
+            }
             break;    
     }
     
@@ -208,9 +212,11 @@ void ui_render_alarm_time(uint8_t just_entered) {
 
 void ui_render_alarm_tone(uint8_t just_entered) {
     char line1[16] = "Alarm Tone:     ";
+    char line2[] = "0 = Off";
     
     if (just_entered) {
         lcd_write_string(1,1, line1);
+        lcd_write_string(2,10, line2);
     }
     set_cursor(2,1);// second character
     write_data_char(ui_alarm_sel + 48);

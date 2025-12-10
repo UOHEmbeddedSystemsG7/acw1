@@ -58,6 +58,9 @@
       <itemPath>rtc.h</itemPath>
       <itemPath>buzzer.c</itemPath>
       <itemPath>buzzer.h</itemPath>
+      <itemPath>.gitignore</itemPath>
+      <itemPath>heating.c</itemPath>
+      <itemPath>heating.h</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

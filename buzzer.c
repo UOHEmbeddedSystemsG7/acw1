@@ -35,6 +35,16 @@ void play_midi(const note melody[], uint32_t position) {
     }
 }
 
+
+void play_note(const note melody[], uint32_t i) {
+    
+    const uint16_t len = sizeof(*melody)/sizeof(melody[0]);
+    const note n = melody[i];
+    set_freq(n.freq);
+    set_duty(n.volume);
+}
+
+
 void pwm_reset() {
     CCP1CON = 0x00;
     CCP1CON = 0x0C;

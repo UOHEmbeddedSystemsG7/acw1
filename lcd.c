@@ -93,26 +93,27 @@ void lcd_write_string(char row, char col, char *text){
     }
 }
 
-void lcd_write_temp(char row, char col, uint16_t celsius){
+void lcd_write_temp(char row, char col, uint16_t celsius, uint16_t prev_celsius){
     
-    // ADD TRY FOR IF WRONG COL CHOSEN
-    set_cursor(row,col);// first character
-    write_data_char(((celsius / 100) % 10) + 48);
+    if (celsius != prev_celsius){
+        set_cursor(row,col);// first character
+        write_data_char(((celsius / 100) % 10) + 48);
 
-    set_cursor(row,(col + 1));// second character
-    write_data_char(((celsius / 10) % 10) + 48);
-    
-    set_cursor(row,(col + 2));// third character
-    write_data_char(46);
+        set_cursor(row,(col + 1));// second character
+        write_data_char(((celsius / 10) % 10) + 48);
 
-    set_cursor(row,(col + 3));// third character
-    write_data_char((celsius % 10u) + 48);
-    
-    set_cursor(row, (col +4));
-    write_data_char(223);
-    
-    set_cursor(row, (col +5));
-    write_data_char(67);
+        set_cursor(row,(col + 2));// third character
+        write_data_char(46);
+
+        set_cursor(row,(col + 3));// third character
+        write_data_char((celsius % 10u) + 48);
+
+        set_cursor(row, (col +4));
+        write_data_char(223);
+
+        set_cursor(row, (col +5));
+        write_data_char(67);
+    }
     
 }
 
