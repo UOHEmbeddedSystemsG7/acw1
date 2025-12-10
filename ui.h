@@ -31,6 +31,7 @@ void ui_decrement(uint8_t current_screen);
 uint16_t ui_temp_upper;
 uint16_t ui_temp_lower;
 uint8_t ui_alarm_sel;
+uint8_t ui_window_disabled;
 
 rtc_time_t ui_temp_start;
 rtc_time_t ui_temp_end;
@@ -44,6 +45,7 @@ void ui_render_heating_start(uint8_t just_entered);
 void ui_render_heating_end(uint8_t just_entered);
 void ui_render_alarm_time(uint8_t just_entered);
 void ui_render_alarm_tone(uint8_t just_entered);
+void ui_render_heating_disabled(uint8_t just_entered);
 
 
 #ifdef __cplusplus

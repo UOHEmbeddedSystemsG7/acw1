@@ -85,7 +85,10 @@ void ui_increment(uint8_t current_screen) {
             if (ui_alarm_sel != 2) {
                 ui_alarm_sel++;
             }
-            break;   
+            break;  
+        case 7:
+            ui_window_disabled = 1;
+            break; 
         
     }
     
@@ -117,6 +120,9 @@ void ui_decrement(uint8_t current_screen) {
                 ui_alarm_sel--;
             }
             break;    
+        case 7:
+            ui_window_disabled = 0;
+            break; 
     }
     
 }
@@ -220,5 +226,17 @@ void ui_render_alarm_tone(uint8_t just_entered) {
     }
     set_cursor(2,1);// second character
     write_data_char(ui_alarm_sel + 48);
+}
+
+void ui_render_heating_disabled(uint8_t just_entered) {
+    char line1[16] = "Heating Disable:";
+    char line2[] = "1 = Off";
+    
+    if (just_entered) {
+        lcd_write_string(1,1, line1);
+        lcd_write_string(2,10, line2);
+    }
+    set_cursor(2,1);// second character
+    write_data_char(ui_window_disabled + 48);
 }
 

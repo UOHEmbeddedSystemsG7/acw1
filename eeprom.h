@@ -25,6 +25,7 @@ uint8_t eeprom_read_byte(uint16_t addr);
 const uint16_t EEPROM_ADDR_TEMP_UPPER = 0x0001;
 const uint16_t EEPROM_ADDR_TEMP_LOWER = 0x0002;
 const uint16_t EEPROM_ADDR_ALARM_SEL = 0x0005;
+const uint16_t EEPROM_ADDR_HEAT_OFF = 0x0006;
 
 
 const uint16_t EEPROM_ADDR_TEMP_START_H = 0x0100;

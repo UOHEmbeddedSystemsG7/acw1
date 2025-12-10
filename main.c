@@ -34,7 +34,7 @@ uint32_t eeprom_last_save_count = 0;
 
 // lcd
 uint8_t ui_selected_screen = 0;
-#define TOP_SCREEN 6
+#define TOP_SCREEN 7
 uint8_t counter = 0;
 uint8_t screen_swapped = 1;
 
@@ -75,6 +75,8 @@ int main(void)
     ui_alarm_time.hour = eeprom_read_byte(EEPROM_ADDR_ALARM_H);
     ui_alarm_time.minute = eeprom_read_byte(EEPROM_ADDR_ALARM_M);
     
+    ui_window_disabled = eeprom_read_byte(EEPROM_ADDR_HEAT_OFF);
+    
     
     
 
@@ -111,11 +113,9 @@ int main(void)
         // SLOW BUTTONS! Do not work!
         if (btn_inc()) {
             ui_increment(ui_selected_screen);
-            __delay_ms(10);
         }
         if (btn_dec()) {
             ui_decrement(ui_selected_screen);
-            __delay_ms(10);
         }
         
         
@@ -190,6 +190,9 @@ int main(void)
                 case 6:
                     ui_render_alarm_tone(screen_swapped);
                     break;
+                case 7:
+                    ui_render_heating_disabled(screen_swapped);
+                    break;
            }
             screen_swapped = 0;
             lcd_last_run_count = main_loop_count;
@@ -258,6 +261,8 @@ int main(void)
             
             eeprom_write_byte(EEPROM_ADDR_ALARM_H, ui_alarm_time.hour);
             eeprom_write_byte(EEPROM_ADDR_ALARM_M, ui_alarm_time.minute);
+            
+            eeprom_write_byte(EEPROM_ADDR_HEAT_OFF, ui_window_disabled);
             main_loop_count = eeprom_last_save_count;
             
         }
