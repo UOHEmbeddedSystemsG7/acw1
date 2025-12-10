@@ -117,7 +117,22 @@ int main(void)
         xiiseg_multiplex();
         
         
-        celsius = adc_to_celsius(read_adc());
+        //celsius = adc_to_celsius(read_adc());
+        
+        uint16_t new_celsius = adc_to_celsius(read_adc());
+
+        // simple low-pass filter: filtered = 3/4 * old + 1/4 * new
+        if (filtered_celsius == 0) {
+        // first time, just initialise
+            filtered_celsius = new_celsius;
+        } 
+        
+        else {
+            filtered_celsius = (uint16_t)(((uint32_t)filtered_celsius * 3u + (uint32_t)new_celsius) / 4u);
+        }
+
+        celsius = filtered_celsius;
+        
         
         xiiseg_display(3, 0x39); // 0x39 is the hex for C
         xiiseg_display(2, digits[celsius % 10u]);
@@ -136,6 +151,8 @@ int main(void)
                // set both to 0 so they refresh
                memset(&date_before, 0, sizeof(date_before)); 
                memset(&time_before, 0, sizeof(time_before));
+               
+               
             }
 
             switch (ui_selected_screen) {
@@ -189,7 +206,7 @@ int main(void)
        
         
         
-        // SAVE to EEPROM every ~10 seconds
+         //SAVE to EEPROM every ~10 seconds
         if (main_loop_count - eeprom_last_save_count >= 300) { // we may only want to save if chaganged
             
             eeprom_write_byte(EEPROM_ADDR_ALARM_SEL, ui_alarm_sel);
