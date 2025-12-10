@@ -137,8 +137,9 @@ int main(void)
 
         // LCDTIME/DATE
 
-        // run this every ~100 loops
-        if (main_loop_count - lcd_last_run_count >= 100){
+        // run this this only every two loops,
+        // since this was update to only write diff, its much faster.
+        if (main_loop_count - lcd_last_run_count >= 2){
             if (screen_swapped) {
                // clean bottom line, top done in render
 
@@ -177,6 +178,7 @@ int main(void)
                     break;
            }
             screen_swapped = 0;
+            lcd_last_run_count = main_loop_count;
         }
         
         // RTC Refresh
@@ -185,6 +187,7 @@ int main(void)
             rtc_get_time(&time_now);
             rtc_get_date(&date_now); // can be removed if wanted quicker
             heating_logic(celsius, time_now);
+            rtc_last_fetch_count = main_loop_count;
         }
 
         
@@ -241,6 +244,7 @@ int main(void)
             
             eeprom_write_byte(EEPROM_ADDR_ALARM_H, ui_alarm_time.hour);
             eeprom_write_byte(EEPROM_ADDR_ALARM_M, ui_alarm_time.minute);
+            main_loop_count = eeprom_last_save_count;
             
         }
         
