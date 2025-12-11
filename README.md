@@ -1,8 +1,22 @@
 # ACW
 
 ## Instructions to Run
+MPLABX auto-generated MakeFiles, using XC8 compiler.
 
 ## Required Tools
+MCU - [PIC18F45K22](https://ww1.microchip.com/downloads/jp/DeviceDoc/jp547043.pdf)
+
+PCB - [EasyPIC v7](https://www.mikroe.com/easypic-v7)
+
+External Modules:
+   - LM35 - [Analog Temperature Sensor](https://www.ti.com/lit/ds/symlink/lm35.pdf)
+   - M24C08 - [I2C EEPROM](https://www.st.com/resource/en/datasheet/m24c08-r.pdf)
+   - BU9873 - [I2C RTC](https://download.mikroe.com/documents/datasheets/BU9873_datasheet.pdf)
+    
+    
+    
+    
+  
 
 ## Pins Used
 
