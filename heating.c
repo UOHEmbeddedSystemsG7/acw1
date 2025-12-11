@@ -58,7 +58,7 @@ void heating_logic(uint16_t celsius, rtc_time_t time_now){
     uint8_t start_min = ui_temp_start.minute;
     
     // checks hour then minute for whether heating allowed to turn on
-    if ((time_now.hour >= start_hour) && (time_now.hour <= end_hour)){
+    if ((time_now.hour >= start_hour) && (time_now.hour <= end_hour) && (!ui_window_disabled)){
         
         if ((time_now.hour == end_hour) && (time_now.minute > end_min)){
             heating_off();
