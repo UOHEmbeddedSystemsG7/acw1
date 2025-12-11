@@ -38,23 +38,23 @@ External Modules:
 |      | 1   | ^^^ | 
 |      | 2   | ^^^ | 
 |      | 3   | ^^^ |
-|      | 4   |    Heater | 
-|      | 5   |    Heater | 
-|      | 6   |    Heater | 
-|      | 7   |    Heater |
-| B    | 0   |     | 
-|      | 1   |     | 
-|      | 2   |     | 
-|      | 3   |     |
-|      | 4   |     | 
-|      | 5   |     | 
-|      | 6   |     | 
-|      | 7   |     |
+|      | 4   | Heater | 
+|      | 5   | Heater | 
+|      | 6   | Heater | 
+|      | 7   | Heater |
+| B    | 0   | LCD D4    | 
+|      | 1   | LCD D5    | 
+|      | 2   | LCD D6    | 
+|      | 3   | LCD D7    |
+|      | 4   | LCD RS    | 
+|      | 5   | LCD EN    | 
+|      | 6   | BTN: DBNC Increment    | 
+|      | 7   | BTN: DBNC Decrement   |
 | C    | 0   | BTN: Cycle    | 
 |      | 1   | BTN: Select | 
-|      | 2   |     | 
+|      | 2   | Buzzer    | 
 |      | 3   | I2C SCK |
-|      | 4   |  I2C SDA | 
+|      | 4   | I2C SDA | 
 |      | 5   |     | 
 |      | 6   | BTN: Increment | 
 |      | 7   | BTN: Decrement |
@@ -67,9 +67,9 @@ External Modules:
 |      | 6   | ^^^ | 
 |      | 7   | ^^^ |
 | E    | 0   |     | 
-|      | 1   | Buzzwer    | 
+|      | 1   |     | 
 |      | 2   | LM35 Temp. Sensor    | 
-|      | 3   |     |
+|      | 3   | NC.    |
 |      | 4   | NC.    | 
 |      | 5   | NC.    | 
 |      | 6   | NC.    | 
